@@ -23,12 +23,16 @@ const useLang = () => useContext(LangContext);
 
 const detectLang = (): Lang => {
   try {
+    const p = window.location.pathname.replace(/\/+$/, '');
+    if (p === '/pt') return 'pt';
+    if (p === '/es') return 'es';
+    if (p === '/en') return 'en';
     const saved = localStorage.getItem('criealgo_lang');
     if (saved === 'pt' || saved === 'en' || saved === 'es') return saved;
-    const nav = (navigator.language || 'pt').toLowerCase();
+    const nav = (navigator.language || 'en').toLowerCase();
     return nav.startsWith('pt') ? 'pt' : nav.startsWith('es') ? 'es' : 'en';
   } catch {
-    return 'pt';
+    return 'en';
   }
 };
 
@@ -958,7 +962,7 @@ const PacotesSection = () => {
 
 /* ---------- A equipa ---------- */
 
-const TIME_FOTOS = ['/br/img/dhemes.webp', ''];
+const TIME_FOTOS = ['/br/img/dhemes.webp', '/img/tay.webp'];
 const TIME_CORES = ['#06D6A0', '#FFD166'];
 
 const TimeSection = () => {
@@ -1192,31 +1196,40 @@ const RaioXSection = () => {
 
 /* ---------- FAQ ---------- */
 
+const FAQ_GIFS = [
+  'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif',
+  'https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif',
+  'https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif',
+  'https://media.giphy.com/media/mCRJDo24UvJMA/giphy.gif',
+  'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',
+  'https://media.giphy.com/media/3orieUe6ejxSFxYCXe/giphy.gif',
+];
+
 const FaqSection = () => {
   const { t } = useLang();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 md:py-36 bg-white relative z-20">
-      <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <p className="text-sm font-semibold tracking-widest uppercase text-[#9B7BE8] mb-6">{t.faq.kicker}</p>
-        <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-14">
+    <section id="faq" className="py-14 md:py-20 bg-white relative z-20">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <p className="text-sm font-semibold tracking-widest uppercase text-[#9B7BE8] mb-4">{t.faq.kicker}</p>
+        <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-8">
           {t.faq.h1} <span className="italic text-black/40">{t.faq.h2}</span>
         </h2>
-        <div className="flex flex-col">
+        <div className="grid md:grid-cols-2 gap-x-12 items-start">
           {t.faq.items.map((item: any, i: number) => (
-            <div key={i} className="border-t border-black/10 last:border-b">
+            <div key={i} className="border-t border-black/10">
               <button
                 type="button"
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between gap-6 py-7 text-left group"
+                className="w-full flex items-center justify-between gap-4 py-4 text-left group"
               >
-                <span className="text-xl md:text-2xl font-display font-medium tracking-tight group-hover:text-black/70 transition-colors">{item.q}</span>
+                <span className="text-base md:text-lg font-display font-medium tracking-tight group-hover:text-black/70 transition-colors">{item.q}</span>
                 <span
-                  className="shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-colors"
+                  className="shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-colors"
                   style={{ borderColor: ['#118AB2', '#06D6A0', '#FFD166', '#EF476F', '#9B7BE8', '#118AB2'][i % 6] + '55', color: ['#118AB2', '#06D6A0', '#E3A93C', '#EF476F', '#9B7BE8', '#118AB2'][i % 6] }}
                 >
-                  {open === i ? <Minus size={18} /> : <Plus size={18} />}
+                  {open === i ? <Minus size={15} /> : <Plus size={15} />}
                 </span>
               </button>
               <AnimatePresence initial={false}>
@@ -1228,7 +1241,15 @@ const FaqSection = () => {
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-8 text-lg text-black/60 font-light leading-relaxed max-w-3xl">{item.a}</p>
+                    <div className="pb-5 flex gap-4 items-start">
+                      <img
+                        src={FAQ_GIFS[i % FAQ_GIFS.length]}
+                        alt=""
+                        loading="lazy"
+                        className="w-1/4 max-w-[130px] aspect-square object-cover rounded-2xl border border-black/10"
+                      />
+                      <p className="w-3/4 text-sm md:text-[15px] text-black/60 font-light leading-relaxed">{item.a}</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1438,11 +1459,14 @@ export default function App() {
         <FaqSection />
 
         {/* CTA / Footer */}
-        <footer id="contato" className="py-32 px-6 md:px-12 bg-[#F9F9F9] relative z-20 text-center border-t border-black/5">
+        <footer id="contato" className="py-24 md:py-32 px-6 md:px-12 bg-[#0B0B0F] text-white relative z-20 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggeredContainer} className="flex flex-col items-center max-w-7xl mx-auto">
-            <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-display font-medium tracking-tighter leading-none mb-12 text-[#1B1C1E]">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-medium text-white/80 mb-10">
+              <span className="foot-dot"></span> {t.footer.avail}
+            </span>
+            <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-display font-medium tracking-tighter leading-none mb-12 text-white">
               {t.footer.heading1} <br />
-              <span className="text-black/40 italic">{t.footer.heading2}</span>
+              <span className="text-white/40 italic">{t.footer.heading2}</span>
             </h2>
 
             <div className="flex flex-col items-center gap-6 mb-8 w-full">
@@ -1456,10 +1480,10 @@ export default function App() {
                   </span>
                 </span>
               </a>
-              <p className="text-black/45 text-sm">{t.footer.ctaNote}</p>
+              <p className="text-white/45 text-sm">{t.footer.ctaNote}</p>
             </div>
 
-            <div className="flex items-center gap-2 text-black/45 font-medium mb-20">
+            <div className="flex items-center gap-2 text-white/45 font-medium mb-20">
               <span>{t.footer.orWrite}</span>
               <button onClick={handleCopyEmail} className="inline-flex items-center gap-2 text-[#1B1C1E] hover:text-[#118AB2] transition-colors underline underline-offset-4 decoration-[#06D6A0]/60">
                 {copied ? (
@@ -1475,27 +1499,27 @@ export default function App() {
             </div>
 
             {/* bloco institucional */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 text-left border-t border-black/5 pt-12 mb-12">
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 text-left border-t border-white/10 pt-12 mb-12">
               <div>
                 <div className="font-display font-bold tracking-tighter text-2xl mb-3">
                   criealgo<span className="text-[#06D6A0]">.</span>
                 </div>
-                <p className="text-sm text-black/55 font-light leading-relaxed max-w-[30ch]">{t.footer.tagline}</p>
+                <p className="text-sm text-white/55 font-light leading-relaxed max-w-[30ch]">{t.footer.tagline}</p>
               </div>
               <div className="flex flex-col gap-6">
                 <div>
                   <p className="text-xs font-semibold tracking-widest uppercase text-[#FFD166] mb-2" style={{ color: '#E3A93C' }}>
                     {t.footer.addrPtLabel}
                   </p>
-                  <p className="text-sm text-black/60 font-light">{t.footer.addrPt}</p>
+                  <p className="text-sm text-white/60 font-light">{t.footer.addrPt}</p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold tracking-widest uppercase text-[#06D6A0] mb-2">{t.footer.addrBrLabel}</p>
-                  <p className="text-sm text-black/60 font-light">{t.footer.addrBr}</p>
+                  <p className="text-sm text-white/60 font-light">{t.footer.addrBr}</p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold tracking-widest uppercase text-[#118AB2] mb-2">{t.footer.contact}</p>
-                  <a href={`mailto:${EMAIL}`} className="text-sm text-black/60 font-light hover:text-black transition-colors">
+                  <a href={`mailto:${EMAIL}`} className="text-sm text-white/60 font-light hover:text-white transition-colors">
                     {EMAIL}
                   </a>
                 </div>
@@ -1503,16 +1527,16 @@ export default function App() {
               <div>
                 <div className="flex flex-wrap gap-2.5">
                   {[
-                    { n: 'Meta Business', key: 'Meta' },
-                    { n: 'Google Partner', key: 'Google' },
-                    { n: 'Shopify Partner', key: 'Shopify' },
-                    { n: 'Brevo Certified', key: 'Brevo' },
+                    { n: 'Meta Ads Marketing', key: 'Meta' },
+                    { n: 'Windsor.ai', key: 'Windsor' },
+                    { n: 'MailerLite', key: 'MailerLite' },
+                    { n: 'Loja Integrada', key: 'Loja Integrada' },
                   ].map((b) => {
                     const ic = TECH_LOGOS.find((l) => l.name === b.key);
                     return (
                       <span
                         key={b.n}
-                        className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3.5 py-2 text-xs font-semibold text-black/65 shadow-sm"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-2 text-xs font-semibold text-white/70 "
                       >
                         {ic?.path && (
                           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" style={{ fill: ic.hex }} aria-hidden="true">
@@ -1523,23 +1547,26 @@ export default function App() {
                       </span>
                     );
                   })}
-                  <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3.5 py-2 text-xs font-semibold text-black/65 shadow-sm">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-2 text-xs font-semibold text-white/70 ">
                     <span className="w-2 h-2 rounded-full bg-[#06D6A0] inline-block"></span> SSL &amp; RGPD
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-center w-full gap-6 text-sm text-black/50 font-medium pt-8 border-t border-black/5">
+            <div className="flex flex-col md:flex-row justify-between items-center w-full gap-6 text-sm text-white/50 font-medium pt-8 border-t border-white/10">
               <p>
                 &copy; {new Date().getFullYear()} criealgo. {t.footer.rights}
               </p>
-              <div className="flex gap-8">
-                <a href="https://instagram.com/criealgo" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
+                <a href="https://instagram.com/criealgo" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                   Instagram
                 </a>
-                <a href="https://www.linkedin.com/company/criealgo" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+                <a href="https://www.linkedin.com/company/criealgo" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                   LinkedIn
+                </a>
+                <a href={`/legal/${lang}.html`} className="hover:text-white transition-colors">
+                  {t.footer.legal}
                 </a>
               </div>
             </div>

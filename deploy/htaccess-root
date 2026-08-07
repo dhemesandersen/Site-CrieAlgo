@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteRule ^(pt|en|es)/?$ /index.html [L]
+
+<IfModule mod_headers.c>
+<FilesMatch "\.(webp|png|jpe?g|svg|gif)$">
+Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+</IfModule>

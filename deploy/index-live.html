@@ -19,8 +19,8 @@
     <meta name="twitter:title" content="CrieAlgo: Design, Web & IA para marcas que querem crescer" />
     <meta name="twitter:description" content="Estúdio digital independente. Estratégia, marca, sites, lojas online, conteúdo e automação com IA." />
     <meta name="twitter:image" content="https://criealgo.pro/favicon.png" />
-    <script type="module" crossorigin src="/assets/index-DmUe08KG.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DOMPHM4X.css">
+    <script type="module" crossorigin src="/assets/index-CQVQt8tD.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BUnnv4Eo.css">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -148,6 +148,9 @@
   var el=document.getElementById('pr');
   var ja=null; try{ ja=localStorage.getItem(K); }catch(e){}
   var q=new URLSearchParams(location.search).get('r');
+  var pth=location.pathname.replace(/\/+$/,'');
+  var mapa={'/pt':'pt','/en':'en','/es':'es'};
+  if(mapa[pth]){ try{localStorage.setItem(K,mapa[pth]); localStorage.setItem(L,mapa[pth]);}catch(e){} ja=mapa[pth]; }
   if(q==='trocar'||q==='x'||q===''){ try{localStorage.removeItem(K);}catch(e){} ja=null; }
   else if(q){ try{localStorage.setItem(K,q);}catch(e){} ja=q; }
   function limpar(){ [el, document.getElementById('pr-css')].forEach(function(n){ if(n&&n.parentNode) n.parentNode.removeChild(n); }); }
