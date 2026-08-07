@@ -434,7 +434,9 @@ export const T: any = {
       "done": "Recebido. Respondemos em até 48 horas.",
       "fail": "Não foi possível enviar. Tente outra vez ou escreva-nos por email.",
       "fServ": "Que tipo de serviço procura?",
-      "servHint": "Toque para escolher. Pode marcar vários e deslizar para o lado."
+      "servHint": "Toque num serviço da panela para o devolver à gaveta.",
+      "potEmpty": "A panela está vazia. Arraste (ou toque) o que precisa.",
+      "drawerEmpty": "Levou tudo! Bom apetite."
     },
     "faq": {
       "kicker": "Perguntas honestas",
@@ -1045,7 +1047,9 @@ export const T: any = {
       "done": "Got it. We reply within 48 hours.",
       "fail": "Something went wrong. Try again or email us.",
       "fServ": "What kind of service are you looking for?",
-      "servHint": "Tap to pick. Choose as many as you like, swipe to see all."
+      "servHint": "Tap a service in the pot to put it back in the drawer.",
+      "potEmpty": "The pot is empty. Drag (or tap) what you need.",
+      "drawerEmpty": "You took everything! Enjoy."
     },
     "faq": {
       "kicker": "Honest questions",
@@ -1656,7 +1660,9 @@ export const T: any = {
       "done": "Recibido. Respondemos en un máximo de 48 horas.",
       "fail": "No se pudo enviar. Inténtalo de nuevo o escríbenos por email.",
       "fServ": "¿Qué tipo de servicio buscas?",
-      "servHint": "Toca para elegir. Puedes marcar varios y deslizar hacia el lado."
+      "servHint": "Toca un servicio de la olla para devolverlo al cajón.",
+      "potEmpty": "La olla está vacía. Arrastra (o toca) lo que necesitas.",
+      "drawerEmpty": "¡Te lo llevaste todo! Buen provecho."
     },
     "faq": {
       "kicker": "Preguntas honestas",

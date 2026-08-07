@@ -1013,6 +1013,24 @@ const TimeSection = () => {
 
 const EMAIL = 'contact@criealgo.pro';
 
+const PanelaSVG = ({ ativa }: { ativa: boolean }) => (
+  <svg viewBox="0 0 130 104" className="w-28 h-auto mx-auto pointer-events-none select-none" aria-hidden="true">
+    {ativa && (
+      <g className="panela-vapor" stroke="#06D6A0" strokeWidth="3" strokeLinecap="round" fill="none">
+        <path className="vp vp1" d="M48 30 q-4 -8 2 -14 q5 -5 2 -12" />
+        <path className="vp vp2" d="M65 28 q-4 -8 2 -14 q5 -5 2 -12" />
+        <path className="vp vp3" d="M82 30 q-4 -8 2 -14 q5 -5 2 -12" />
+      </g>
+    )}
+    <ellipse cx="65" cy="46" rx="37" ry="7" fill="#26262c" stroke="rgba(255,255,255,.25)" strokeWidth="1.5" />
+    <rect x="58" y="36" width="14" height="6" rx="3" fill="#FFD166" />
+    <path d="M28 52 h74 v16 a18 18 0 0 1 -18 18 h-38 a18 18 0 0 1 -18 -18 z" fill="#1c1c21" stroke="rgba(255,255,255,.22)" strokeWidth="1.5" />
+    <path d="M28 56 h-9 a5 5 0 0 0 0 10 h9" fill="none" stroke="rgba(255,255,255,.35)" strokeWidth="3" strokeLinecap="round" />
+    <path d="M102 56 h9 a5 5 0 0 1 0 10 h-9" fill="none" stroke="rgba(255,255,255,.35)" strokeWidth="3" strokeLinecap="round" />
+    <path d="M32 52 h66" stroke="#06D6A0" strokeWidth="2.5" strokeLinecap="round" opacity=".9" />
+  </svg>
+);
+
 const RaioXSection = () => {
   const { lang, t } = useLang();
   const [nome, setNome] = useState('');
@@ -1022,6 +1040,9 @@ const RaioXSection = () => {
   const [estado, setEstado] = useState<'idle' | 'sending' | 'done' | 'fail'>('idle');
   const [gaveta, setGaveta] = useState(false);
   const [servSel, setServSel] = useState<string[]>([]);
+  const [sobrePanela, setSobrePanela] = useState(false);
+  const addServ = (id: string) => setServSel((sel) => (sel.includes(id) ? sel : [...sel, id]));
+  const rmServ = (id: string) => setServSel((sel) => sel.filter((x) => x !== id));
   const toggleServ = (id: string) =>
     setServSel((sel) => (sel.includes(id) ? sel.filter((x) => x !== id) : [...sel, id]));
 
@@ -1131,31 +1152,82 @@ const RaioXSection = () => {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="gaveta-scroll flex gap-2.5 overflow-x-auto px-5 pb-3 pt-1 cursor-grab">
-                    {t.labs.cards.map((c: any) => {
-                      const on = servSel.includes(c.id);
-                      const cor = LABS_META[c.id]?.accent || '#06D6A0';
-                      return (
-                        <button
-                          key={c.id}
-                          type="button"
-                          onClick={() => toggleServ(c.id)}
-                          className="shrink-0 rounded-full px-4 py-2.5 text-sm font-medium border transition-all duration-200"
-                          style={
-                            on
-                              ? { background: cor, borderColor: cor, color: '#101012', boxShadow: `0 4px 16px ${cor}66` }
-                              : { background: 'rgba(255,255,255,.05)', borderColor: cor + '66', color: cor }
-                          }
-                        >
-                          {c.title}
-                        </button>
-                      );
-                    })}
+                  <div className="grid grid-cols-1 sm:grid-cols-[1fr_11.5rem] gap-3 px-4 pb-4">
+                    <motion.div
+                      initial={{ y: -14 }}
+                      animate={{ y: 0 }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+                      className="rounded-xl border border-white/15 bg-white/[0.03] p-3 pt-2"
+                      style={{ boxShadow: 'inset 0 6px 14px rgba(0,0,0,.35)' }}
+                    >
+                      <div className="mx-auto mb-2.5 h-1.5 w-14 rounded-full bg-white/25" aria-hidden="true"></div>
+                      <div className="flex flex-wrap gap-2">
+                        {t.labs.cards.filter((c: any) => !servSel.includes(c.id)).map((c: any) => {
+                          const cor = LABS_META[c.id]?.accent || '#06D6A0';
+                          return (
+                            <motion.button
+                              key={c.id}
+                              layoutId={'serv-' + c.id}
+                              type="button"
+                              draggable
+                              onDragStart={(e: any) => e.dataTransfer && e.dataTransfer.setData('text/plain', c.id)}
+                              onClick={() => addServ(c.id)}
+                              className="rounded-full px-3.5 py-2 text-[13px] font-medium border cursor-grab active:cursor-grabbing"
+                              style={{ background: 'rgba(255,255,255,.05)', borderColor: cor + '66', color: cor }}
+                            >
+                              {c.title}
+                            </motion.button>
+                          );
+                        })}
+                        {servSel.length === t.labs.cards.length && (
+                          <p className="text-xs text-white/40 px-1 py-2">{t.raiox.drawerEmpty}</p>
+                        )}
+                      </div>
+                    </motion.div>
+                    <div
+                      onDragOver={(e) => { e.preventDefault(); setSobrePanela(true); }}
+                      onDragLeave={() => setSobrePanela(false)}
+                      onDrop={(e) => {
+                        e.preventDefault();
+                        setSobrePanela(false);
+                        const id = e.dataTransfer.getData('text/plain');
+                        if (id) addServ(id);
+                      }}
+                      className="rounded-xl border transition-colors p-3 flex flex-col justify-start"
+                      style={{
+                        borderColor: sobrePanela ? '#06D6A0' : 'rgba(255,255,255,.15)',
+                        background: sobrePanela ? 'rgba(6,214,160,.08)' : 'rgba(255,255,255,.03)',
+                        borderStyle: 'dashed',
+                      }}
+                    >
+                      <PanelaSVG ativa={servSel.length > 0} />
+                      <div className="flex flex-wrap gap-1.5 justify-center mt-2 min-h-7">
+                        {servSel.map((id) => {
+                          const c = t.labs.cards.find((x: any) => x.id === id);
+                          const cor = LABS_META[id]?.accent || '#06D6A0';
+                          return (
+                            <motion.button
+                              key={id}
+                              layoutId={'serv-' + id}
+                              type="button"
+                              onClick={() => rmServ(id)}
+                              title="×"
+                              className="rounded-full px-2.5 py-1 text-[11px] font-semibold border"
+                              style={{ background: cor, borderColor: cor, color: '#101012', boxShadow: `0 3px 10px ${cor}55` }}
+                            >
+                              {c?.title} ×
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+                      <p className="text-[11px] text-white/35 text-center mt-2">
+                        {servSel.length === 0 ? t.raiox.potEmpty : t.raiox.servHint}
+                      </p>
+                    </div>
                   </div>
-                  <p className="px-5 pb-4 text-xs text-white/35">{t.raiox.servHint}</p>
                 </motion.div>
               )}
             </AnimatePresence>
