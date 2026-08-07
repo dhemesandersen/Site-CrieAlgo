@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>criealgo. Brasil: a gente entrega pronto, funcionando</title>
+<meta name="description" content="Estratégia, marca, sites, lojas online, conteúdo e automação com IA. Você não quer montar o sanduíche. Quer o lanche pronto. +300 empresas no Brasil e +100 no mundo já confiaram na CrieAlgo.">
+<link rel="canonical" href="https://criealgo.pro/br/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://criealgo.pro/br/">
+<meta property="og:title" content="criealgo. Brasil: a gente entrega pronto, funcionando">
+<meta property="og:description" content="Você não quer montar o sanduíche. Quer o lanche pronto. Estratégia, marca, sites, lojas e automação para quem tem um negócio para tocar.">
+<meta property="og:image" content="https://github.com/dhemesandersen.png">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="https://github.com/dhemesandersen.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"CrieAlgo","url":"https://criealgo.pro/br/","description":"Estúdio digital independente. Estratégia, branding, websites, e-commerce, conteúdo, tráfego e automação com inteligência artificial.","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"founder":{"@type":"Person","name":"Dhemes Andersen"},"employee":{"@type":"Person","name":"Rafael","jobTitle":"Relacionamento e Expansão no Brasil"},"priceRange":"R$$"}
+</script>
+<style>
+:root{
+  --ink:#1B1C1E; --paper:#F9F9F9; --white:#fff;
+  --amarelo:#FFD166; --verde:#06D6A0; --rosa:#EF476F; --azul:#118AB2; --roxo:#9B7BE8;
+  --muted:#6B6D72; --line:rgba(27,28,30,.10);
+  --r:28px; --rs:18px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,h4,.dsp{font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.06;letter-spacing:-.025em}
+h1{font-size:clamp(2.15rem,4.5vw,3.85rem)}
+h2{font-size:clamp(1.95rem,4.2vw,3.3rem)}
+h3{font-size:clamp(1.2rem,2vw,1.55rem)}
+p{color:#33353a}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sec{padding:clamp(66px,8.5vw,124px) 0}
+.eyebrow{font-family:'Space Grotesk';font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:2px;background:currentColor;border-radius:2px;opacity:.6}
+.lead{font-size:clamp(1.04rem,1.5vw,1.2rem);color:#3d3f45;max-width:62ch}
+
+/* pontinhos ambiente (como no criealgo.pro) */
+.orb{position:absolute;width:8px;height:8px;border-radius:50%;pointer-events:none;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:.35s}
+nav.stuck{background:rgba(249,249,249,.88);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--line);padding:11px 0}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:1.35rem;letter-spacing:-.045em;text-decoration:none;display:inline-flex;align-items:baseline;line-height:1}
+.logo .pt{color:var(--verde);transition:color .4s}
+.logo:hover .pt{color:var(--rosa)}
+.logo .flag{font-size:.58rem;letter-spacing:.16em;background:var(--ink);color:#fff;padding:4px 9px;border-radius:20px;font-weight:600;margin-left:10px;position:relative;top:-3px}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{text-decoration:none;font-size:.92rem;font-weight:500;color:#43454a;transition:.2s}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:940px){.nav-links a:not(.btn){display:none}}
+
+/* BOTÕES */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:.96rem;border:none;cursor:pointer;transition:transform .25s cubic-bezier(.2,.9,.3,1),box-shadow .25s,background .25s;font-family:'Inter'}
+.btn-p{background:var(--ink);color:#fff;box-shadow:0 6px 22px rgba(27,28,30,.18)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(27,28,30,.26)}
+.btn-g{background:var(--verde);color:#053626;box-shadow:0 6px 22px rgba(6,214,160,.32)}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(6,214,160,.44)}
+.btn-o{background:transparent;color:var(--ink);border:1.5px solid rgba(27,28,30,.2)}
+.btn-o:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.btn-s{padding:11px 20px;font-size:.87rem}
+
+/* HERO */
+.hero{padding:168px 0 40px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;width:640px;height:640px;right:-240px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(255,209,102,.42),transparent 68%);filter:blur(60px);z-index:-1}
+.hero::before{content:'';position:absolute;width:500px;height:500px;left:-210px;bottom:-180px;border-radius:50%;background:radial-gradient(circle,rgba(6,214,160,.26),transparent 68%);filter:blur(60px);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:20px}}
+.tag{display:inline-flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:500;margin-bottom:26px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--verde);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+h1 em{font-style:normal;position:relative;white-space:nowrap}
+h1 em::after{content:'';position:absolute;left:-4px;right:-4px;bottom:.01em;height:.26em;background:var(--amarelo);z-index:-1;border-radius:3px}
+.hero-sub{margin:28px 0 34px;font-size:clamp(1.06rem,1.6vw,1.26rem);color:#3d3f45;max-width:52ch}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:.85rem;color:var(--muted);margin-top:16px}
+
+/* SANDUÍCHE */
+.sand-wrap{position:relative;display:grid;place-items:center;min-height:340px}
+.sand{width:300px;height:300px;position:relative;cursor:pointer}
+.sand svg{width:100%;height:100%;overflow:visible}
+.layer{transform-origin:center;transition:transform .75s cubic-bezier(.34,1.4,.5,1),opacity .5s}
+.sand.solto .l-top{transform:translate(48px,-104px) rotate(-16deg)}
+.sand.solto .l-alface{transform:translate(-72px,-34px) rotate(13deg)}
+.sand.solto .l-queijo{transform:translate(80px,6px) rotate(9deg)}
+.sand.solto .l-carne{transform:translate(-64px,52px) rotate(-11deg)}
+.sand.solto .l-tomate{transform:translate(66px,74px) rotate(20deg)}
+.sand-legenda{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'Space Grotesk';font-weight:600;font-size:.82rem;letter-spacing:.03em;padding:9px 20px;border-radius:100px;transition:.4s;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.sand.solto .sand-legenda{background:#fff;color:var(--rosa);border:1px solid rgba(239,71,111,.3)}
+.sand-legenda{background:var(--ink);color:#fff}
+.sand-hint{position:absolute;top:6px;right:-4px;font-size:.72rem;color:var(--muted);font-weight:500}
+
+/* PROVA */
+.prova{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:56px}
+.pv{background:var(--paper);padding:30px 26px}
+.pv b{display:block;font-family:'Space Grotesk';font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1}
+.pv span{display:block;font-size:.86rem;color:var(--muted);margin-top:8px;line-height:1.4}
+@media(max-width:760px){.prova{grid-template-columns:1fr}}
+
+/* MARQUEE */
+.mq{background:var(--ink);color:#fff;padding:20px 0;overflow:hidden;white-space:nowrap}
+.mq-t{display:inline-block;animation:sc 52s linear infinite;font-family:'Space Grotesk';font-size:1rem;font-weight:500}
+.mq-t span{margin:0 20px;opacity:.58}
+.mq-t span.hi{opacity:1;color:var(--amarelo)}
+@keyframes sc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* GRIDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:940px){.grid3,.grid2{grid-template-columns:1fr}}
+
+/* DARK */
+.dark{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(44px,6vw,78px);position:relative;overflow:hidden}
+.dark h2,.dark h3,.dark h4{color:#fff}
+.dark p{color:rgba(255,255,255,.72)}
+.pcard{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);padding:28px}
+.pcard b{font-family:'Space Grotesk';font-size:2.4rem;font-weight:700;display:block;line-height:1;letter-spacing:-.03em}
+.pcard .src{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:14px;display:block;line-height:1.45}
+.c1{color:var(--amarelo)}.c2{color:var(--verde)}.c3{color:var(--rosa)}.c4{color:var(--azul)}
+
+/* MOMENTOS */
+.mom{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:34px;position:relative;overflow:hidden;transition:transform .32s cubic-bezier(.2,.9,.3,1),box-shadow .32s}
+.mom:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.08)}
+.mom .n{font-family:'Space Grotesk';font-size:3.4rem;font-weight:700;line-height:1;letter-spacing:-.05em;opacity:.13;position:absolute;top:16px;right:24px}
+.mom .ic{width:80px;height:80px;margin-bottom:16px;display:block;border-radius:18px;background:#F9F9F9;object-fit:cover}
+.mom h3{margin-bottom:10px;max-width:16ch}
+.mom p{font-size:.96rem;color:#4a4c52}
+.mom .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.mom .tags i{font-style:normal;font-size:.74rem;background:rgba(27,28,30,.055);padding:5px 11px;border-radius:100px;font-weight:500;color:#4a4c52}
+.mom .bar{position:absolute;left:0;top:0;bottom:0;width:4px}
+
+/* PACOTES */
+.bloco-h{display:flex;align-items:baseline;gap:14px;margin:52px 0 20px;flex-wrap:wrap}
+.bloco-h h3{font-size:1.28rem}
+.bloco-h i{font-style:normal;font-size:.8rem;color:var(--muted);font-weight:500}
+.pk{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.2,.9,.3,1),box-shadow .3s}
+.pk:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.08)}
+.pk::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--linha,var(--amarelo))}
+.pk .num{font-family:'Space Grotesk';font-size:.72rem;font-weight:700;letter-spacing:.16em;color:var(--muted)}
+.pk h3{margin:11px 0 9px}
+.pk .desc{font-size:.94rem;color:#494b51;flex:1}
+.pk ul{list-style:none;margin:18px 0;font-size:.885rem}
+.pk li{padding:6px 0 6px 22px;position:relative;color:#494b51;border-bottom:1px solid rgba(27,28,30,.05)}
+.pk li:last-child{border:none}
+.pk li::before{content:'';position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--linha,var(--amarelo))}
+.preco{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.preco small{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+.preco b{font-family:'Space Grotesk';font-size:1.95rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.preco i{font-style:normal;font-size:.83rem;color:var(--muted);display:block;margin-top:5px}
+.badge{position:absolute;top:18px;right:18px;background:var(--rosa);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.11em;padding:6px 13px;border-radius:100px;text-transform:uppercase;box-shadow:0 4px 14px rgba(239,71,111,.32)}
+
+/* TIME */
+.time{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+@media(max-width:860px){.time{grid-template-columns:1fr}}
+.pessoa{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:32px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.pessoa:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.07)}
+.pessoa .av{width:112px;height:112px;border-radius:26px;display:block;object-fit:cover;background:#F9F9F9;margin-bottom:18px}
+.pessoa h3{margin-bottom:3px}
+.pessoa .role{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+.pessoa p{font-size:.95rem;color:#4a4c52}
+.pessoa .onde{margin-top:16px;font-size:.83rem;display:inline-flex;align-items:center;gap:7px;background:rgba(27,28,30,.05);padding:6px 13px;border-radius:100px;font-weight:500}
+
+/* RAIO-X */
+.raiox{background:linear-gradient(135deg,var(--amarelo),#FFE6A8);border-radius:var(--r);padding:clamp(38px,5.4vw,70px);position:relative;overflow:hidden}
+.raiox::after{content:'';position:absolute;width:400px;height:400px;right:-150px;bottom:-200px;border-radius:50%;background:rgba(255,255,255,.34)}
+.raiox>*{position:relative;z-index:1}
+.form{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;max-width:680px}
+.form input{flex:1;min-width:210px;padding:16px 20px;border-radius:100px;border:1.5px solid rgba(27,28,30,.16);font-family:'Inter';font-size:.96rem;background:rgba(255,255,255,.93);transition:.2s}
+.form input:focus{outline:none;border-color:var(--ink);background:#fff}
+.form-note{font-size:.79rem;color:rgba(27,28,30,.62);margin-top:13px}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.passo{background:rgba(255,255,255,.56);border-radius:var(--rs);padding:20px}
+.passo b{font-family:'Space Grotesk';display:block;margin-bottom:5px;font-size:.98rem}
+.passo span{font-size:.87rem;color:rgba(27,28,30,.7)}
+@media(max-width:760px){.passos{grid-template-columns:1fr}}
+
+/* DESTAQUES */
+.destaques{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+@media(max-width:900px){.destaques{grid-template-columns:1fr}}
+.dcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.dcard:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.08)}
+.dcard .top{height:5px}
+.dcard .in{padding:28px}
+.dcard .kind{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dcard h3{margin:9px 0 4px}
+.dcard .u{font-size:.79rem;color:var(--azul);font-weight:600;display:block;margin-bottom:12px}
+.dcard p{font-size:.92rem;color:#4a4c52}
+.dcard .estado{margin-top:14px;font-size:.75rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;color:#04906d}
+
+/* PORTFOLIO */
+.filtros{display:flex;gap:9px;flex-wrap:wrap;margin:28px 0 24px}
+.fbtn{padding:9px 17px;border-radius:100px;border:1.5px solid rgba(27,28,30,.14);background:transparent;font-family:'Inter';font-size:.85rem;font-weight:500;cursor:pointer;transition:.22s}
+.fbtn:hover{border-color:var(--ink)}
+.fbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+@media(max-width:980px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+.pit{border-radius:var(--rs);overflow:hidden;background:var(--white);border:1px solid var(--line);transition:transform .3s cubic-bezier(.2,.9,.3,1),box-shadow .3s}
+.pit:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.09)}
+.pit .im{aspect-ratio:4/3;overflow:hidden;background:#f0f0f0}
+.pit .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pit:hover .im img{transform:scale(1.05)}
+.pit .mt{padding:12px 14px 15px}
+.pit .mt b{font-family:'Space Grotesk';font-size:.92rem;font-weight:600;display:block;letter-spacing:-.015em}
+.pit .mt span{font-size:.72rem;color:var(--muted);display:block;margin-top:3px;line-height:1.35}
+.mais{text-align:center;margin-top:28px}
+
+/* PROCESSO */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:38px}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding-top:24px}
+.step::before{content:'';position:absolute;top:0;left:0;width:36px;height:4px;border-radius:3px;background:var(--ink)}
+.step b{font-family:'Space Grotesk';font-size:.74rem;letter-spacing:.15em;color:var(--muted);display:block;margin-bottom:8px}
+.step h4{font-size:1.08rem;margin-bottom:7px}
+.step p{font-size:.91rem;color:#4a4c52}
+
+/* GARANTIAS */
+.gar{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:860px){.gar{grid-template-columns:1fr}}
+.gcard{border:1px solid var(--line);border-radius:var(--rs);padding:26px;background:var(--white)}
+.gcard .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;margin-bottom:13px}
+.gcard h4{font-size:1.02rem;margin-bottom:6px}
+.gcard p{font-size:.9rem;color:#4a4c52}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line)}
+.fq{border-bottom:1px solid var(--line)}
+.fq button{width:100%;background:none;border:none;padding:23px 44px 23px 0;text-align:left;font-family:'Space Grotesk';font-size:clamp(1rem,1.4vw,1.14rem);font-weight:600;cursor:pointer;position:relative;color:var(--ink);letter-spacing:-.01em}
+.fq button::after{content:'+';position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.5rem;font-weight:400;transition:transform .3s;color:var(--muted)}
+.fq.open button::after{transform:translateY(-50%) rotate(45deg)}
+.fq .ans{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.fq .ans p{padding:0 30px 24px 0;font-size:.96rem;color:#4a4c52}
+
+/* FINAL */
+.final{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(48px,6.5vw,92px);text-align:center;position:relative;overflow:hidden}
+.final::before{content:'';position:absolute;width:560px;height:560px;left:50%;top:-270px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,209,102,.22),transparent 68%)}
+.final>*{position:relative;z-index:1}
+.final h2{color:#fff;max-width:18ch;margin:0 auto 18px}
+.final p{color:rgba(255,255,255,.72);max-width:52ch;margin:0 auto 32px}
+
+footer{padding:50px 0 40px;border-top:1px solid var(--line);margin-top:76px}
+.frow{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+footer p,footer a{font-size:.85rem;color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--ink)}
+.flinks{display:flex;gap:22px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.9,.3,1),transform .7s cubic-bezier(.2,.9,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.mq-t,.dot,.orb{animation:none}.layer{transition:none}}
+
+.wafab{position:fixed;right:20px;bottom:20px;z-index:900;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 26px rgba(37,211,102,.4);text-decoration:none;transition:transform .25s,bottom .25s}
+.com-chat .wafab{bottom:96px}
+.wafab:hover{transform:scale(1.08)}
+
+/* ===== logos de clientes (marquee) ===== */
+.clogos{overflow:hidden;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+.clogos-t{display:flex;align-items:center;gap:64px;width:max-content;animation:mqslide 55s linear infinite}
+.clogos:hover .clogos-t{animation-play-state:paused}
+.clogos img{display:block;filter:grayscale(1);opacity:.72;transition:filter .25s,opacity .25s}
+.clogos .cl:hover img{filter:none;opacity:1}
+.clogos .cl-txt{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:rgba(27,28,30,.55);white-space:nowrap;transition:color .25s}
+.clogos .cl:hover .cl-txt{color:var(--ink)}
+@keyframes mqslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ===== portfolio em duas linhas ===== */
+.pmwrap{overflow:hidden;margin-top:34px}
+.pmrow{display:flex;gap:14px;width:max-content;animation:mqslide 220s linear infinite;padding:6px 0}
+.pmrow.pmrev{animation:mqrev 220s linear infinite}
+.pmwrap:hover .pmrow{animation-play-state:paused}
+@keyframes mqrev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.pcard{width:172px;flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pcard .pim{aspect-ratio:4/3;background:#f1f1ee;overflow:hidden}
+.pcard .pim img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard .pmt{padding:8px 10px 10px}
+.pcard .pmt b{display:block;font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard .pmt span{display:block;font-size:.62rem;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:640px){.pcard{width:150px}.pmrow{gap:10px}}
+/* ===== ferramentas ===== */
+.techbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.tl{position:relative;display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:10px 16px;cursor:default}
+.tl svg{width:20px;height:20px;display:block}
+.tl .tname{font-size:.8rem;font-weight:600;color:rgba(27,28,30,.75);white-space:nowrap}
+.tl:hover{border-color:rgba(27,28,30,.35)}
+.tip-balao{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px) scale(.92);transform-origin:bottom center;width:max-content;max-width:240px;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:10px 14px;font-size:12.5px;line-height:1.45;color:#3d3f45;font-weight:400;box-shadow:4px 4px 0 rgba(27,28,30,.18);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.2,.9,.3,1.4);z-index:60;white-space:normal}
+.tip-balao b{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ink);margin-bottom:2px;font-size:12px}
+.tip-balao::after{content:'';position:absolute;top:100%;left:50%;margin-left:-7px;width:12px;height:12px;background:#fff;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-7px) rotate(45deg)}
+.tl:hover .tip-balao{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+</style>
+<style id="ca-chat-css">
+.ca-fab{position:fixed;right:20px;bottom:20px;z-index:9998;width:58px;height:58px;border-radius:50%;background:#06D6A0;color:#fff;border:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(6,214,160,.42);transition:transform .25s}
+.ca-fab:hover{transform:scale(1.07)}
+.ca-idioma{position:fixed;right:20px;bottom:92px;z-index:9999;width:min(312px,calc(100vw - 40px));background:#fff;border:1px solid rgba(27,28,30,.1);border-radius:20px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.17);font-family:'Inter',system-ui,-apple-system,sans-serif;display:none}
+.ca-idioma.on{display:block}
+.ca-idioma h4{font-family:'Space Grotesk',sans-serif;font-size:1.02rem;font-weight:600;letter-spacing:-.02em;margin:0 0 4px;color:#1B1C1E}
+.ca-idioma p{font-size:.82rem;color:#6B6D72;margin:0 0 14px;line-height:1.45}
+.ca-idioma button{display:flex;width:100%;align-items:center;gap:10px;text-align:left;background:#F9F9F9;border:1px solid rgba(27,28,30,.07);border-radius:12px;padding:11px 13px;margin-bottom:7px;cursor:pointer;font-family:inherit;font-size:.87rem;font-weight:500;color:#1B1C1E;transition:background .18s,border-color .18s}
+.ca-idioma button:hover{background:#fff;border-color:rgba(6,214,160,.6)}
+.ca-idioma button i{font-style:normal;font-size:.72rem;color:#6B6D72;margin-left:auto;font-weight:500}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo">criealgo<span class="pt">.</span><span class="flag">BRASIL</span></a>
+    <div class="nav-links">
+      <a href="#momentos">Onde você está</a>
+      <a href="#pacotes">O que fazemos</a>
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#time">Quem somos</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#raiox" class="btn btn-p btn-s">Falar com a gente</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="orb" style="background:var(--azul);left:6%;top:32%;animation-delay:.4s"></span>
+    <span class="orb" style="background:var(--roxo);right:34%;top:22%;animation-delay:1.6s"></span>
+    <span class="orb" style="background:var(--rosa);left:44%;bottom:16%;animation-delay:2.7s"></span>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="rv">Você não quer<br>montar o sanduíche.<br>Quer o <em>lanche pronto</em>.</h1>
+        <p class="hero-sub rv">Ninguém abre uma empresa com vontade de virar desenvolvedor, designer, redator e gestor de tráfego ao mesmo tempo. Ferramenta é ingrediente. A gente entrega o prato pronto: pensado, montado e funcionando.</p>
+        <div class="hero-cta rv">
+          <a href="#raiox" class="btn btn-g">Quero conversar</a>
+          <a href="#momentos" class="btn btn-o">Em que momento eu estou?</a>
+        </div>
+        <p class="hero-note rv">Resposta no mesmo dia, direto com quem vai fazer. Sem formulário de dez campos.</p>
+      </div>
+
+      <div class="sand-wrap rv">
+        <div class="sand solto" id="sand" title="Clique para montar">
+          <span class="sand-hint" id="hint">clique →</span>
+          <svg viewBox="0 0 200 200" aria-label="Sanduíche que se monta">
+            <ellipse cx="100" cy="178" rx="72" ry="9" fill="rgba(27,28,30,.09)"/>
+            <!-- pão de baixo -->
+            <g class="layer l-base">
+              <path d="M36 148h128a8 8 0 0 1 0 16H36a8 8 0 0 1 0-16z" fill="#E8A94F"/>
+              <path d="M36 143h128a8 8 0 0 1 8 8H28a8 8 0 0 1 8-8z" fill="#F2BE68"/>
+            </g>
+            <!-- tomate -->
+            <g class="layer l-tomate">
+              <path d="M40 132h120a9 9 0 0 1 0 14H40a9 9 0 0 1 0-14z" fill="#EF476F"/>
+              <circle cx="66" cy="139" r="3.4" fill="#fff" opacity=".45"/>
+              <circle cx="112" cy="139" r="3.4" fill="#fff" opacity=".45"/>
+              <circle cx="146" cy="139" r="3.4" fill="#fff" opacity=".45"/>
+            </g>
+            <!-- carne -->
+            <g class="layer l-carne">
+              <rect x="32" y="112" width="136" height="20" rx="10" fill="#8A5A3B"/>
+              <rect x="32" y="112" width="136" height="8" rx="4" fill="#A06A46"/>
+            </g>
+            <!-- queijo -->
+            <g class="layer l-queijo">
+              <path d="M34 100h132l-10 14H44z" fill="#FFD166"/>
+              <path d="M46 114l-8 12 12-4zM104 114l-6 13 13-5zM152 114l-7 12 12-5z" fill="#FFD166"/>
+              <circle cx="72" cy="107" r="3" fill="#E8B44B"/>
+              <circle cx="122" cy="106" r="2.4" fill="#E8B44B"/>
+            </g>
+            <!-- alface -->
+            <g class="layer l-alface">
+              <path d="M32 90c9-9 18 3 27-4s17 5 26-3 18 6 27-2 17 5 26-2 12 4 20 1v22H32z" fill="#06D6A0"/>
+              <path d="M32 100c9-6 18 2 27-3s17 4 26-2 18 4 27-2 17 4 26-2 12 3 20 1v6H32z" fill="#04B98A" opacity=".5"/>
+            </g>
+            <!-- pão de cima -->
+            <g class="layer l-top">
+              <path d="M28 92c0-32 22-52 72-52s72 20 72 52z" fill="#F2BE68"/>
+              <path d="M28 92c0-32 22-52 72-52s72 20 72 52z" fill="#EFB559" opacity=".35"/>
+              <circle cx="74" cy="62" r="3" fill="#FFF3D6"/>
+              <circle cx="104" cy="54" r="3" fill="#FFF3D6"/>
+              <circle cx="132" cy="68" r="3" fill="#FFF3D6"/>
+              <circle cx="92" cy="76" r="2.6" fill="#FFF3D6"/>
+              <circle cx="126" cy="46" r="2.4" fill="#FFF3D6"/>
+            </g>
+          </svg>
+          <span class="sand-legenda" id="sandTxt">faça você mesmo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prova rv">
+      <div class="pv"><b>+300</b><span>empresas no Brasil já confiaram na CrieAlgo</span></div>
+      <div class="pv"><b>+100</b><span>marcas atendidas em Portugal e no resto do mundo</span></div>
+      <div class="pv"><b>14 anos</b><span>fazendo isso todos os dias, sem parar</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="clogos"><div class="clogos-t" id="clogos"></div></div>
+
+<!-- O SANDUÍCHE -->
+<section class="sec" id="porque">
+  <div class="wrap">
+    <div class="dark rv">
+      <div class="eyebrow" style="color:rgba(255,255,255,.55)">A analogia do lanche</div>
+      <div class="grid2" style="gap:44px;align-items:center">
+        <div>
+          <h2 style="max-width:19ch">Te venderam a receita, a chapa e o avental.</h2>
+          <p style="margin-top:20px;font-size:1.06rem">A internet está cheia de ferramenta que promete resolver a sua vida. Plataforma de loja, construtor de site, CRM, agendador de post, IA que escreve, IA que desenha, IA que faz vídeo. Cada uma cobra uma mensalidade e devolve um ingrediente.</p>
+          <p style="margin-top:16px;font-size:1.06rem">Só que o dono do negócio não acordou querendo virar cozinheiro. Ele quer o lanche na mesa, quentinho, com o guardanapo do lado, para poder voltar a cuidar do que realmente dá dinheiro.</p>
+          <p style="margin-top:16px;font-size:1.06rem;color:#fff"><strong>A gente é a cozinha.</strong> Você diz a fome; nós entregamos o prato.</p>
+        </div>
+        <div class="grid2" style="gap:16px">
+          <div class="pcard"><b class="c3">R$ 0</b><p style="margin-top:12px">é o que a ferramenta mais cara do mundo faz pelo seu caixa enquanto ninguém a implementa direito.</p></div>
+          <div class="pcard"><b class="c1">82%</b><p style="margin-top:12px">dos pequenos negócios brasileiros vendem por WhatsApp. E o faturamento do MEI ainda assim caiu 12%.</p><span class="src">Sebrae, Pesquisa Pulso, 12ª ed., 8.200+ entrevistados, 2026</span></div>
+          <div class="pcard"><b class="c2">45%</b><p style="margin-top:12px">do código gerado por IA sai com falha de segurança. Bonito por fora não é igual a pronto.</p><span class="src">Veracode GenAI Code Security · CSA reporta 62%</span></div>
+          <div class="pcard"><b class="c4">1 só</b><p style="margin-top:12px">interlocutor. Em vez de cinco fornecedores que se culpam uns aos outros quando algo quebra.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENTOS -->
+<section class="sec" id="momentos" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Em que momento você está</div>
+      <h2 style="max-width:20ch">Todo negócio está num destes três lugares.</h2>
+      <p class="lead" style="margin-top:18px">A gente entra em qualquer um deles. Só muda o que você precisa ouvir primeiro. Escolha o seu e veja o caminho.</p>
+    </div>
+
+    <div class="grid3 rv" style="margin-top:38px">
+      <div class="mom">
+        <span class="bar" style="background:var(--amarelo)"></span>
+        <span class="n">01</span>
+        <img class="ic" src="img/momento-01.webp" alt="" width="80" height="80" loading="lazy">
+        <h3>Ainda não tem nada</h3>
+        <p>Você tem a ideia, o produto na garagem, um nome anotado no bloco de notas e uma vontade danada. Falta tudo o resto e, sejamos honestos, você não faz a menor ideia por onde começar. Tudo bem: ninguém nasce sabendo escolher entre Nuvemshop e Shopify.</p>
+        <p style="margin-top:12px"><strong>O que a gente faz:</strong> transforma a ideia solta num negócio que existe de verdade. Nome, cara, voz, endereço na internet e o primeiro caminho de venda. Em semanas, não em meses.</p>
+        <div class="tags"><i>Marca e identidade</i><i>Site ou loja</i><i>Estratégia inicial</i><i>Primeiros conteúdos</i></div>
+      </div>
+
+      <div class="mom">
+        <span class="bar" style="background:var(--verde)"></span>
+        <span class="n">02</span>
+        <img class="ic" src="img/momento-02.webp" alt="" width="80" height="80" loading="lazy">
+        <h3>Já vende, quer vender mais</h3>
+        <p>O negócio anda. Não do jeito que você queria, mas anda. Você já entendeu que postar bonito não paga boleto e desconfia que está deixando dinheiro na mesa, só não sabe exatamente onde ele está caindo.</p>
+        <p style="margin-top:12px"><strong>O que a gente faz:</strong> descobre o vazamento e fecha. Loja que converte, WhatsApp que responde sozinho, tráfego que traz cliente e não curtida, e-mail que traz gente de volta.</p>
+        <div class="tags"><i>Loja online</i><i>Tráfego</i><i>WhatsApp e automação</i><i>E-mail e CRM</i></div>
+      </div>
+
+      <div class="mom">
+        <span class="bar" style="background:var(--azul)"></span>
+        <span class="n">03</span>
+        <img class="ic" src="img/momento-03.webp" alt="" width="80" height="80" loading="lazy">
+        <h3>Tem tudo, mas está capenga</h3>
+        <p>Site feito por um sobrinho em 2019. Loja que o frete não calcula. Três Instagrams, dois logos e nenhum manual. Você já pagou por isso uma vez, e a ideia de recomeçar do zero dá um cansaço só de pensar.</p>
+        <p style="margin-top:12px"><strong>O que a gente faz:</strong> aproveita o que presta, conserta o que dá e refaz só o que precisa mesmo. Costuma custar bem menos do que você imagina, e a diferença aparece na primeira semana.</p>
+        <div class="tags"><i>Diagnóstico</i><i>Reforma de site e loja</i><i>Reposicionamento</i><i>Padronização visual</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACOTES -->
+<section class="sec" id="pacotes" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">O que fazemos e quanto custa</div>
+      <h2 style="max-width:19ch">Preço na tela.<br>Sem “solicite um orçamento”.</h2>
+      <p class="lead" style="margin-top:18px">Quase toda agência brasileira esconde o valor e te obriga a uma reunião só para descobrir se cabe no bolso. Aqui não. Cada frente tem um piso publicado. O valor final depende do tamanho do que você precisa, e isso conversamos com tudo na mesa.</p>
+    </div>
+
+    <div class="bloco-h rv"><h3>Pensar antes de gastar</h3><i>a parte que quase todo mundo pula e depois se arrepende</i></div>
+    <div class="grid2 rv">
+      <div class="pk" style="--linha:var(--roxo)">
+        <span class="num">01</span>
+        <h3>Estratégia &amp; Posicionamento</h3>
+        <p class="desc">Antes de criar, entender o que precisa mesmo ser criado. Onde você joga, contra quem, por que alguém escolheria você, quanto cobrar e por onde começar. Sai um plano executável, não um PDF bonito para arquivar.</p>
+        <ul><li>Diagnóstico do negócio e do mercado</li><li>Público, proposta de valor e diferencial</li><li>Precificação e oferta</li><li>Plano de ação com prioridades</li><li>Sessão de trabalho ao vivo</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 1.990</b><i>à vista ou em até 12x</i></div>
+      </div>
+      <div class="pk" style="--linha:var(--amarelo)">
+        <span class="num">02</span>
+        <h3>Marca &amp; Identidade</h3>
+        <p class="desc">O que faz o resto parecer caro em vez de barato. Identidade com sistema, não um logo solto que você não sabe aplicar em lugar nenhum.</p>
+        <ul><li>Logo e sistema de aplicação</li><li>Paleta, tipografia e regras de uso</li><li>Tom de voz da marca</li><li>Kit para redes sociais e papelaria</li><li>Arquivos abertos, seus para sempre</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 2.490</b><i>à vista ou em até 12x</i></div>
+      </div>
+    </div>
+
+    <div class="bloco-h rv"><h3>Existir bem na internet</h3><i>o endereço que é seu, não alugado de rede social</i></div>
+    <div class="grid2 rv">
+      <div class="pk" style="--linha:var(--azul)">
+        <span class="num">03</span>
+        <h3>Site institucional</h3>
+        <p class="desc">Feito à mão, não um template com o seu logo em cima. Para clínica, escritório, indústria, prestador de serviço, imobiliária, restaurante, projeto pessoal. Rápido, encontrável e com o caminho até você bem claro.</p>
+        <ul><li>Estrutura e texto pensados para converter</li><li>Design próprio, à medida da marca</li><li>SEO técnico e velocidade conferidos</li><li>WhatsApp, formulário e captura de e-mail</li><li>Google Meu Negócio configurado</li><li>Você mesmo edita depois, se quiser</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 1.990</b><i>à vista, 12x, ou R$ 249/mês na assinatura</i></div>
+      </div>
+      <div class="pk" style="--linha:var(--verde)">
+        <span class="badge">Carro-chefe</span>
+        <span class="num">04</span>
+        <h3>Loja online</h3>
+        <p class="desc">Loja nova, migração ou reconstrução. Shopify, Nuvemshop, Loja Integrada ou WooCommerce: a escolha depende do seu negócio, não da nossa comodidade. É o que fazemos há mais tempo e o que mais nos pedem.</p>
+        <ul><li>Frete que calcula certo, testado de verdade</li><li>Pagamento e Pix funcionando ponta a ponta</li><li>Nota fiscal com CBS e IBS como a lei de 2026 exige</li><li>Página de produto desenhada para vender</li><li>Carrinho abandonado ativo desde o dia 1</li><li>Migração sem perder o que já vende</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 2.990</b><i>à vista ou em até 12x · plataforma à parte</i></div>
+      </div>
+    </div>
+
+    <div class="bloco-h rv"><h3>Vender e ser lembrado</h3><i>gente entrando pela porta, todo mês</i></div>
+    <div class="grid2 rv">
+      <div class="pk" style="--linha:var(--verde)">
+        <span class="num">05</span>
+        <h3>WhatsApp &amp; Automação com IA</h3>
+        <p class="desc">Você já vende pelo WhatsApp. 82% do Brasil vende. O problema não é o canal: é que ele não fala com o seu estoque, o seu financeiro e o seu Pix, e ainda depende de você responder às 23h.</p>
+        <ul><li>WhatsApp Business API oficial, com selo verde</li><li>Atendimento com IA treinada no seu negócio</li><li>Catálogo ligado ao estoque real</li><li>Recuperação de carrinho e follow-up automático</li><li>Integrações e fluxos que não quebram sozinhos</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 1.490</b><i>de setup + R$ 590/mês · sem fidelidade</i></div>
+      </div>
+      <div class="pk" style="--linha:var(--rosa)">
+        <span class="num">06</span>
+        <h3>Tráfego pago</h3>
+        <p class="desc">Meta e Google já decidiram que a IA deles conduz a campanha. Brigar contra isso é queimar dinheiro. O trabalho hoje é alimentar essa IA com criativo estruturado e dados seus. É isso que a gente faz.</p>
+        <ul><li>Meta Ads e Google Ads estruturados para o Advantage+</li><li>Pixel e API de conversão instalados direito</li><li>Criativos produzidos, não reaproveitados</li><li>Público próprio a partir da sua base</li><li>Relatório em português, sem jargão</li><li>A conta é sua, sempre</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 1.990</b><i>/mês + 12% da verba · verba à parte</i></div>
+      </div>
+      <div class="pk" style="--linha:var(--roxo)">
+        <span class="num">07</span>
+        <h3>Conteúdo &amp; Comunicação</h3>
+        <p class="desc">Instagram é o segundo canal de venda do país. Calendário, carrossel, Reels e vídeo produzidos com IA sob direção humana. Rápido, mas com cara de marca, não de banco de imagens.</p>
+        <ul><li>Calendário editorial mensal</li><li>12 posts + 4 Reels por mês</li><li>Legendas escritas para o seu público</li><li>Newsletter e e-mail marketing</li><li>Identidade visual consistente em tudo</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 1.290</b><i>/mês · sem fidelidade</i></div>
+      </div>
+      <div class="pk" style="--linha:var(--azul)">
+        <span class="num">08</span>
+        <h3>Otimizar o que já existe</h3>
+        <p class="desc">Nem tudo precisa ser refeito. Muita coisa que parece grave é meia hora de trabalho, e muita coisa que parece boba está custando venda todo dia. Primeiro a gente olha, depois decide junto com você.</p>
+        <ul><li>Diagnóstico completo de site, loja ou perfil</li><li>Velocidade, SEO e checkout</li><li>Correção de frete, pagamento e integrações</li><li>Reorganização de conteúdo e navegação</li><li>Padronização visual do que está solto</li></ul>
+        <div class="preco"><small>A partir de</small><b>R$ 690</b><i>por intervenção · diagnóstico grátis antes</i></div>
+      </div>
+    </div>
+
+    <p class="lead rv" style="margin-top:36px;font-size:.94rem;color:var(--muted)">Combinações têm desconto e quase sempre fazem mais sentido do que comprar solto. Pergunte ao Rafael.</p>
+  </div>
+</section>
+
+<!-- RAIO-X -->
+<section class="sec" id="raiox" style="padding-top:0">
+  <div class="wrap">
+    <div class="raiox rv">
+      <div class="eyebrow" style="color:rgba(27,28,30,.55)">Comece por aqui · sem custo</div>
+      <h2 style="max-width:17ch">Raio-X do seu negócio<br>em 48 horas.</h2>
+      <p class="lead" style="margin-top:16px;color:rgba(27,28,30,.78)">Manda o link do seu site, da sua loja ou do seu Instagram, ou só conta o que você quer construir. Em até 48h devolvemos um diagnóstico honesto, feito por gente, com o que está travando a sua venda e o que faríamos primeiro se o negócio fosse nosso.</p>
+
+      <form class="form" id="fx" autocomplete="on">
+        <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+        <input type="text" name="site" placeholder="Seu site, @instagram, ou “ainda não tenho nada”" required>
+        <button type="submit" class="btn btn-p">Pedir Raio-X →</button>
+      </form>
+      <p class="form-note">Sem reunião obrigatória, sem ligação insistente, sem cartão. Se não fizer sentido para você, é só não responder.</p>
+
+      <div class="passos">
+        <div class="passo"><b>1 · Você manda</b><span>Leva 20 segundos. E se ainda não tem nada, melhor ainda: a folha em branco é o barato de arrumar.</span></div>
+        <div class="passo"><b>2 · A gente olha</b><span>Velocidade, checkout, frete, SEO, marca, caminho até a compra. Com olho de quem já teve loja.</span></div>
+        <div class="passo"><b>3 · Você recebe</b><span>Diagnóstico direto ao ponto. Com o que arrumar primeiro, mesmo que não seja com a gente.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIME -->
+<section class="sec" id="time" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Quem vai falar com você</div>
+      <h2 style="max-width:20ch">Duas pessoas. Nome, rosto e telefone.</h2>
+      <p class="lead" style="margin-top:16px">Não é central de atendimento nem robô de triagem. Você fala com quem decide e com quem faz.</p>
+    </div>
+
+    <div class="time rv">
+      <div class="pessoa">
+        <img class="av" src="img/rafael.webp" alt="Ilustração do Rafael" width="112" height="112" loading="lazy">
+        <h3>Rafael</h3>
+        <span class="role">Relacionamento e Expansão · Brasil</span>
+        <p>É com o Rafael que você conversa primeiro. Ele entende o momento do seu negócio, traduz o que você precisa e acompanha o projeto do começo ao fim, no fuso horário certo, no português certo, e com resposta no mesmo dia.</p>
+        <span class="onde"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> No Brasil, no seu horário</span>
+      </div>
+      <div class="pessoa">
+        <img class="av" src="img/dhemes.webp" alt="Ilustração do Dhemes" width="112" height="112" loading="lazy">
+        <h3>Dhemes Andersen</h3>
+        <span class="role">Fundador · Direção criativa e técnica</span>
+        <p>Fundou a CrieAlgo depois de ter a própria loja no e-commerce brasileiro. Apanhou de plataforma, frete e anúncio com o próprio dinheiro. Hoje dirige os projetos de Portugal, atendendo marcas europeias com o padrão que se exige por lá. Continua online e ativo em todos os projetos, todos os dias.</p>
+        <span class="onde"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Em Portugal, sempre online</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTAQUES -->
+<section class="sec" id="trabalhos" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">O que estamos fazendo agora</div>
+      <h2 style="max-width:22ch">Não é só loja. Nunca foi.</h2>
+      <p class="lead" style="margin-top:16px">Clínica que vende curso, marca de pedra natural, turismo de luxo, imobiliária, estúdio de arquitetura. Muda o setor, não o método.</p>
+    </div>
+
+    <div class="destaques rv">
+      <div class="dcard"><div class="top" style="background:var(--verde)"></div><div class="in">
+        <span class="kind">E-commerce premium</span><h3>Olivah Stone Store</h3><span class="u">store.olivah.pt</span>
+        <p>Loja de pedra natural em Shopify. Apresentação de produto no nível de marca de arquitetura, com galeria, variantes e conteúdo técnico, para um material que se vende pelo detalhe.</p>
+        <span class="estado">● em desenvolvimento agora</span>
+      </div></div>
+      <div class="dcard"><div class="top" style="background:var(--azul)"></div><div class="in">
+        <span class="kind">Site + cursos + e-mail</span><h3>AIM Cancer Center</h3><span class="u">aim.clinic</span>
+        <p>Clínica de oncologia que também vende formação. Site, área editorial, cursos e sequências de e-mail que levam ciência de ponta a milhares de caixas de entrada, todos os meses.</p>
+        <span class="estado">● operação contínua</span>
+      </div></div>
+      <div class="dcard"><div class="top" style="background:var(--roxo)"></div><div class="in">
+        <span class="kind">Site + SEO + reservas</span><h3>Vigias</h3><span class="u">vigias.pt</span>
+        <p>Cinco casas perdidas na serra do Alentejo, transformadas num destino que se reserva com o coração e que aparece no topo do Google quando alguém procura.</p>
+        <span class="estado">● no ar e a subir</span>
+      </div></div>
+      <div class="dcard"><div class="top" style="background:var(--rosa)"></div><div class="in">
+        <span class="kind">Marca internacional</span><h3>ESLO Oncology</h3><span class="u">esloncology.com</span>
+        <p>Oncologia de ponta em inglês, para público internacional: sistema editorial, newsletter e captação construídos do zero.</p>
+        <span class="estado">● operação contínua</span>
+      </div></div>
+      <div class="dcard"><div class="top" style="background:var(--amarelo)"></div><div class="in">
+        <span class="kind">Conteúdo e social</span><h3>Studio Goulart</h3><span class="u">arquitetura de interiores</span>
+        <p>Demos voz visual à arquitetura da Izabella: cada post virou vitrine, cada projeto uma história que atrai o cliente certo, e não o curioso.</p>
+        <span class="estado">● operação contínua</span>
+      </div></div>
+      <div class="dcard"><div class="top" style="background:var(--verde)"></div><div class="in">
+        <span class="kind">Campanha e vídeo</span><h3>Coldwell Banker Prime</h3><span class="u">imobiliário de luxo</span>
+        <p>Imóveis transformados em vontade de morar. Vídeo vertical, campanhas e criativos que fazem o dedo parar no scroll, num mercado onde todo mundo publica a mesma foto.</p>
+        <span class="estado">● operação contínua</span>
+      </div></div>
+    </div>
+
+    <div class="rv" style="margin-top:78px">
+      <div class="eyebrow">E antes disso</div>
+      <h2 style="max-width:22ch">Um monte de marca brasileira que começou pequena.</h2>
+      <p class="lead" style="margin-top:16px">Moda infantil, semijoias, cosméticos, presentes, calçados, alimentos, indústria, transporte, restaurante. Boa parte chegou sem nada pronto, e saiu vendendo.</p>
+    </div>
+
+    <div class="pmwrap rv">
+      <div class="pmrow" id="pmr1"></div>
+      <div class="pmrow pmrev" id="pmr2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FERRAMENTAS -->
+<section class="sec" id="ferramentas" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Caixa de ferramentas</div>
+      <h2 style="max-width:22ch">Ferramentas e conhecimentos que dominamos.</h2>
+      <p class="lead" style="margin-top:16px">Passe o mouse para ver o que fazemos com cada uma.</p>
+    </div>
+    <div class="techbar rv" id="techbar"></div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="sec" id="processo" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Como funciona</div>
+      <h2 style="max-width:17ch">Quatro passos. Sem mistério.</h2>
+    </div>
+    <div class="steps rv">
+      <div class="step"><b>PASSO 01</b><h4>Conversa</h4><p>Você fala com o Rafael e conta onde está. Sem apresentação de slides, sem discurso de vendas. Dez minutos resolvem.</p></div>
+      <div class="step"><b>PASSO 02</b><h4>Raio-X</h4><p>Em 48h devolvemos o diagnóstico, de graça. Seu para usar como quiser, inclusive para pedir orçamento a outro.</p></div>
+      <div class="step"><b>PASSO 03</b><h4>Escopo fechado</h4><p>O que entra, o prazo e o valor. Uma página, sem letra miúda e sem surpresa no meio do caminho.</p></div>
+      <div class="step"><b>PASSO 04</b><h4>No ar e seu</h4><p>Publicado, testado ponta a ponta, com todos os acessos no seu nome. Suporte incluído no primeiro mês.</p></div>
+    </div>
+
+    <div class="gar rv">
+      <div class="gcard"><div class="ic" style="background:rgba(6,214,160,.16);color:#0b8f6d"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5L20 7"/></svg></div><h4>Você fala com quem faz</h4><p>Sem intermediário e sem fila de atendimento. Do primeiro contato à entrega, é a mesma equipe do seu lado.</p></div>
+      <div class="gcard"><div class="ic" style="background:rgba(17,138,178,.16);color:#0e6d8c"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19"/><path d="M6 15h4"/></svg></div><h4>Pix, boleto ou 12x</h4><p>Preço em real, parcelamento em até 12x no cartão. Nada de conversão de euro na hora de pagar.</p></div>
+      <div class="gcard"><div class="ic" style="background:rgba(255,209,102,.3);color:#8a6a12"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="14.5" r="4.3"/><path d="m11.1 11.4 8.4-8.4"/><path d="m17 5.5 2.2 2.2"/><path d="m14.6 7.9 2.2 2.2"/></svg></div><h4>Tudo fica no seu nome</h4><p>Domínio, hospedagem, contas de anúncio, arquivos abertos. Se um dia quiser sair, leva tudo com você.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="grid2" style="gap:52px;align-items:start">
+      <div class="rv" style="position:sticky;top:106px">
+        <div class="eyebrow">Dúvidas</div>
+        <h2>O que todo mundo<br>pergunta antes.</h2>
+        <p class="lead" style="margin-top:16px">Se a sua não estiver aqui, chama no WhatsApp. Quem responde é gente.</p>
+      </div>
+      <div class="faq rv">
+        <div class="fq"><button>Eu não tenho nada ainda. Vocês pegam projeto do zero?</button><div class="ans"><p>Pegamos, e é onde a gente mais gosta de entrar. Sem nada feito não há vício para desfazer. Dá para escolher a plataforma certa desde o começo, montar a marca junto com o site e evitar as três ou quatro decisões caras que quase todo mundo erra no primeiro ano. Comece pelo Raio-X e escreva "ainda não tenho nada"; a conversa é a mesma.</p></div></div>
+        <div class="fq"><button>Vocês só fazem loja online?</button><div class="ans"><p>Não. Loja é o que mais nos pedem, mas metade do que fazemos hoje é outra coisa: site institucional, estratégia, marca, conteúdo, e-mail, campanha, automação. Entre os projetos atuais tem clínica que vende curso, turismo, imobiliária e estúdio de arquitetura. O método é o mesmo; o que muda é o argumento de venda.</p></div></div>
+        <div class="fq"><button>Por que não tem “solicite um orçamento”?</button><div class="ans"><p>Porque isso costuma ser uma forma educada de descobrir quanto você pode pagar antes de dizer o preço. Os pisos estão publicados. O valor final depende do tamanho do que você precisa, e isso a gente conversa com tudo na mesa, não com você no escuro.</p></div></div>
+        <div class="fq"><button>Vocês estão em Portugal. Como funciona na prática?</button><div class="ans"><p>O Rafael está no Brasil, no seu fuso e no seu WhatsApp. É com ele que você fala no dia a dia. O Dhemes dirige os projetos de Portugal e está online todos os dias, em todos eles. Na prática você não sente a distância; sente o contrário, porque parte do padrão vem do mercado europeu.</p></div></div>
+        <div class="fq"><button>Como eu pago daqui?</button><div class="ans"><p>Em real, com Pix, boleto ou cartão em até 12x, o padrão brasileiro. O recebimento passa por um intermediário autorizado pelo Banco Central que converte e repassa. Do seu lado é igual a pagar qualquer fornecedor nacional.</p></div></div>
+        <div class="fq"><button>Vocês usam IA. Então é tudo automático?</button><div class="ans"><p>Não. A IA acelera a produção: o que levava três semanas leva três dias. Mas a decisão do que fazer, a estrutura, a integração e o teste continuam humanos, e é exatamente aí que mora a diferença. Metade do código gerado por IA sem revisão sai com falha de segurança. O trabalho é revisar, integrar e testar, não colar o que a máquina cuspiu.</p></div></div>
+        <div class="fq"><button>Em quanto tempo fica pronto?</button><div class="ans"><p>Site institucional: 5 a 12 dias. Loja: de 10 a 25 dias, conforme o catálogo. Marca: 10 a 15 dias. WhatsApp profissional: 5 a 10 dias, porque a aprovação dos modelos de mensagem depende da Meta. Otimização pontual: quase sempre na mesma semana.</p></div></div>
+        <div class="fq"><button>Tem fidelidade nos planos mensais?</button><div class="ans"><p>Não tem. Avisou, encerra no fim do ciclo, e você fica com tudo: contas, arquivos, acessos. Fidelidade é muleta de quem tem medo de ser comparado.</p></div></div>
+        <div class="fq"><button>Meu site atual é ruim. Refazer ou consertar?</button><div class="ans"><p>Depende, e a resposta honesta às vezes é "conserta". Já devolvemos diagnóstico dizendo que o problema era uma configuração de frete e não o site inteiro. É justamente para isso que o Raio-X existe, e por isso ele é de graça.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="final rv">
+      <h2>Chega de juntar ingrediente.</h2>
+      <p>Conta o que você quer que aconteça no seu negócio. A gente cuida do resto, e você volta a fazer o que faz bem.</p>
+      <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap">
+        <a href="#raiox" class="btn btn-g">Pedir meu Raio-X grátis</a>
+        <a href="#pacotes" class="btn" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22)">Ver o que fazemos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <div>
+        <a href="#" class="logo" style="font-size:1.25rem">criealgo<span class="pt">.</span><span class="flag">BRASIL</span></a>
+        <p style="margin-top:12px">Estúdio digital independente<br>Rafael no Brasil · Dhemes em Portugal · sempre online</p>
+      </div>
+      <div class="flinks">
+        <a href="#momentos">Onde você está</a>
+        <a href="#pacotes">O que fazemos</a>
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#raiox">Raio-X grátis</a>
+        <a href="https://criealgo.pro" target="_blank" rel="noopener">criealgo.pro</a>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:.77rem">Dados citados: Sebrae (Pesquisa Pulso dos Pequenos Negócios, 12ª ed., 2026) · Veracode GenAI Code Security e Cloud Security Alliance · Receita Federal (reforma tributária do consumo, 2026).</p>
+  </div>
+</footer>
+
+
+<script>
+/* ======= CONFIGURAR AQUI ======= */
+const TAWK_ID  = "6a71b1e7055f021d4ace2cd5/1jv61tsjb";                 // tawk.to: "propertyId/widgetId" (Administration › Chat Widget)
+const WHATSAPP = "";                 // ex.: "5511999999999" (Rafael), só números, sem + nem espaços
+const ML_ACTION = "";                // URL de ação do formulário MailerLite
+const EMAIL_FALLBACK = 'rafael@criealgo.com.br';
+/* =============================== */
+
+window.Tawk_API=window.Tawk_API||{}; window.Tawk_LoadStart=new Date();
+let chatPronto=false;
+if(TAWK_ID){
+  document.documentElement.classList.add('com-chat');
+  const s=document.createElement('script');
+  s.async=true; s.src='https://embed.tawk.to/'+TAWK_ID; s.charset='UTF-8';
+  s.setAttribute('crossorigin','*'); document.head.appendChild(s);
+  window.Tawk_API.onLoad=function(){ chatPronto=true; };
+}
+function abrirChat(msg){
+  const A=window.Tawk_API;
+  if(!A || typeof A.maximize!=='function') return false;
+  try{
+    if(msg && typeof A.addEvent==='function') A.addEvent('pedido-raiox',{detalhe:msg},function(){});
+    A.maximize();
+    return true;
+  }catch(e){ return false; }
+}
+
+const meses=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+const _mes=document.getElementById('mes'); if(_mes) _mes.textContent=meses[new Date().getMonth()];
+
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>40),{passive:true});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* SANDUICHE: monta ao entrar em cena, e alterna no clique */
+const sand=document.getElementById('sand'), sandTxt=document.getElementById('sandTxt'), hint=document.getElementById('hint');
+let montado=false;
+function setSand(m){
+  montado=m;
+  sand.classList.toggle('solto',!m);
+  sandTxt.textContent = m ? 'pronto, é só comer' : 'faça você mesmo';
+}
+const so=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ setTimeout(()=>setSand(true),700); so.unobserve(e.target); }
+}),{threshold:.45});
+so.observe(sand);
+sand.addEventListener('click',()=>{ setSand(!montado); hint.style.opacity=0; });
+sand.addEventListener('mouseenter',()=>{ if(montado){hint.textContent='← desmontar'} else {hint.textContent='montar →'} });
+
+/* logos de clientes */
+const CLOGOS=[
+ {n:"AIM Cancer Center",img:"/clientlogos/aim.png",h:38},
+ {n:"Xcape",img:"/clientlogos/xcape.png",h:34},
+ {n:"Vitae Professionals",img:"/clientlogos/vitae.png",h:44},
+ {n:"Vigias",img:"/clientlogos/vigias.png",h:44},
+ {n:"BH Wedding Photo",img:"/clientlogos/bh.png",h:44},
+ {n:"Mizuno",img:"/clientlogos/mizuno.svg",h:30},
+ {n:"CutiCutiBaby"},
+ {n:"Olivah",img:"/clientlogos/olivah.svg",h:26},
+ {n:"GRAACC",img:"/clientlogos/graacc.svg",h:42},
+ {n:"Estúdio Mármores",img:"/clientlogos/marmores.png",h:40},
+ {n:"Studio Goulart"},
+ {n:"European School of Lifestyle Oncology",img:"/clientlogos/eslo.svg",h:36}
+];
+const clEl=document.getElementById('clogos');
+if(clEl){
+  const um=CLOGOS.map(c=>c.img
+    ?`<span class="cl"><img src="${c.img}" alt="${c.n}" style="height:${c.h||36}px" loading="lazy"></span>`
+    :`<span class="cl"><span class="cl-txt">${c.n}</span></span>`).join('');
+  clEl.innerHTML=um+um;
+}
+
+/* FAQ */
+document.querySelectorAll('.fq button').forEach(b=>b.addEventListener('click',()=>{
+  const p=b.parentElement,a=p.querySelector('.ans'),aberto=p.classList.contains('open');
+  document.querySelectorAll('.fq.open').forEach(o=>{o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null});
+  if(!aberto){p.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+}));
+
+/* PORTFÓLIO */
+const PROJ = [{"n": "VNLCST", "img": "img/vnlcst.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Difusor", "img": "img/difusor.webp", "f": "ecom site", "l": "E-commerce · Sites"}, {"n": "Cortinas Alves", "img": "img/cortinas-alves.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Cânhamo Alentejano", "img": "img/canhamo-alentejano.webp", "f": "site", "l": "Site em WP · Sites"}, {"n": "VP Formação", "img": "img/vp-formacao.webp", "f": "estrategia design ecom site mkt", "l": "Estratégica · Criação e Design · E-commerce · Site em WP · Marketing"}, {"n": "Mercadão Fit Store", "img": "img/mercadao-fit-store.webp", "f": "estrategia design ecom", "l": "Estratégica · Criação e Design · E-commerce"}, {"n": "Casa dos Estojos", "img": "img/casa-dos-estojos.webp", "f": "design", "l": "Criação e Design"}, {"n": "Matri Cabelos Naturais", "img": "img/matri-cabelos-naturais.webp", "f": "site", "l": "Sites"}, {"n": "Amoralu", "img": "img/amoralu.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Mimo.Gift", "img": "img/mimo-gift.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Pintainhos", "img": "img/pintainhos.webp", "f": "estrategia design ecom mkt", "l": "Estratégica · Criação e Design · E-commerce · Marketing"}, {"n": "Healthbro", "img": "img/healthbro.webp", "f": "site", "l": "Sites"}, {"n": "Curly Care", "img": "img/curly-care.webp", "f": "site", "l": "Sites"}, {"n": "Grimm Toys", "img": "img/grimm-toys.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Confort Baby & Cia", "img": "img/confort-baby-cia.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Becca Gifts", "img": "img/becca-gifts.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Conterre", "img": "img/conterre.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Fhom", "img": "img/fhom.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Huana Cosmetics", "img": "img/huana-cosmetics.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Maria Fumaça", "img": "img/maria-fumaca.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Etiquetaspara.vc", "img": "img/etiquetaspara-vc.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Conttorno", "img": "img/conttorno.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Mimo Look", "img": "img/mimo-look.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Luft Shoes", "img": "img/luft-shoes.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Geisha Sushi", "img": "img/geisha-sushi.webp", "f": "design site", "l": "Criação e Design · Sites"}, {"n": "Mulekai", "img": "img/mulekai.webp", "f": "ecom", "l": "E-commerce"}, {"n": "ABC de Bebê", "img": "img/abc-de-bebe.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Brincar Toys", "img": "img/brincar-toys.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Spy Boss", "img": "img/spy-boss.webp", "f": "estrategia design ecom", "l": "Estratégica · Criação e Design · E-commerce"}, {"n": "Divine Baby", "img": "img/divine-baby.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Magnólia Acessórios", "img": "img/magnolia-acessorios.webp", "f": "design ecom mkt", "l": "Criação e Design · E-commerce · Marketing"}, {"n": "Bebêtenkitê", "img": "img/bebetenkite.webp", "f": "ecom mkt", "l": "E-commerce · Marketing"}, {"n": "Lavender Gift", "img": "img/lavender-gift.webp", "f": "estrategia design ecom", "l": "Estratégica · Criação e Design · E-commerce"}, {"n": "Mini Vida", "img": "img/mini-vida.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Terra do Grão", "img": "img/terra-do-grao.webp", "f": "ecom", "l": "E-commerce"}, {"n": "Inffantile", "img": "img/inffantile.webp", "f": "estrategia ecom mkt", "l": "Estratégica · E-commerce · Marketing"}, {"n": "Revirando com Lili", "img": "img/revirando-com-lili.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Invernia Peças", "img": "img/invernia-pecas.webp", "f": "design ecom mkt", "l": "Criação e Design · E-commerce · Marketing"}, {"n": "Coisas de Bélli Gibélli", "img": "img/coisas-de-belli-gibelli.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Isso Tudo", "img": "img/isso-tudo.webp", "f": "design", "l": "Criação e Design"}, {"n": "Luca Belo Conceito", "img": "img/luca-belo-conceito.webp", "f": "design site", "l": "Criação e Design · Sites"}, {"n": "Lumos Distribuidora", "img": "img/lumos-distribuidora.webp", "f": "design", "l": "Projeto"}, {"n": "My It Baby", "img": "img/my-it-baby.webp", "f": "estrategia design ecom", "l": "Estratégica · Criação e Design · E-commerce"}, {"n": "Chicletinho Baby", "img": "img/chicletinho-baby.webp", "f": "estrategia design ecom mkt", "l": "Estratégica · Criação e Design · E-commerce · Marketing"}, {"n": "Rio Contracting", "img": "img/rio-contracting.webp", "f": "design site", "l": "Criação e Design · Sites"}, {"n": "Feitu Caju", "img": "img/feitu-caju.webp", "f": "estrategia design ecom mkt", "l": "Estratégica · Criação e Design · E-commerce · Marketing"}, {"n": "Di Ninar", "img": "img/di-ninar.webp", "f": "design", "l": "Criação e Design"}, {"n": "Move Minho", "img": "img/move-minho.webp", "f": "design site", "l": "Criação e Design · Sites"}, {"n": "La Cuisine Bordados", "img": "img/la-cuisine-bordados.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Mizuno", "img": "img/mizuno.webp", "f": "design", "l": "Criação e Design"}, {"n": "CutiCutiBaby", "img": "img/cuticutibaby.webp", "f": "design ecom mkt", "l": "Criação e Design · E-commerce · Marketing"}, {"n": "Lucris Enxovais", "img": "img/lucris-enxovais.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Mundo Magneto", "img": "img/mundo-magneto.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Carinha das Marcas", "img": "img/carinha-das-marcas.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}, {"n": "Bebe Xodó", "img": "img/bebe-xodo.webp", "f": "design", "l": "Criação e Design"}, {"n": "Lwalog", "img": "img/lwalog.webp", "f": "site", "l": "Sites"}, {"n": "Zen Presença Digital", "img": "img/zen-presenca-digital.webp", "f": "design", "l": "Criação e Design"}, {"n": "Cacau Tasters", "img": "img/cacau-tasters.webp", "f": "design ecom", "l": "Criação e Design · E-commerce"}];
+const _r1=document.getElementById('pmr1'),_r2=document.getElementById('pmr2');
+if(_r1&&_r2){
+  const meio=Math.ceil(PROJ.length/2);
+  const card=p=>`<div class="pcard"><div class="pim"><img loading="lazy" src="${p.img}" alt="${p.n}"></div><div class="pmt"><b>${p.n}</b><span>${p.l}</span></div></div>`;
+  const l1=PROJ.slice(0,meio).map(card).join(''), l2=PROJ.slice(meio).map(card).join('');
+  _r1.innerHTML=l1+l1; _r2.innerHTML=l2+l2;
+}
+
+
+const TECH=[{"n": "Adobe", "hex": "#FF0000", "p": "M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z", "tip": "Artes finais, edição de imagem e vídeo profissional."}, {"n": "Canva", "hex": "#00C4CC", "p": "M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z", "tip": "Templates editáveis para a sua equipe continuar sozinha."}, {"n": "Google", "hex": "#4285F4", "p": "M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z", "tip": "SEO, Search Console e presença na busca."}, {"n": "Meta", "hex": "#0467DF", "p": "M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z", "tip": "Campanhas no Instagram e Facebook que vendem."}, {"n": "WordPress", "hex": "#21759B", "p": "M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0", "tip": "Sites e blogs que você mesmo administra, sem depender da gente."}, {"n": "Webflow", "hex": "#146EF5", "p": "m24 4.515-7.658 14.97H9.149l3.205-6.204h-.144C9.566 16.713 5.621 18.973 0 19.485v-6.118s3.596-.213 5.71-2.435H0V4.515h6.417v5.278l.144-.001 2.622-5.277h4.854v5.244h.144l2.72-5.244H24Z", "tip": "Sites visuais rápidos com animação de outro nível."}, {"n": "Shopify", "hex": "#7AB55C", "p": "M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z", "tip": "Lojas online completas, do produto ao checkout."}, {"n": "WooCommerce", "hex": "#96588A", "p": "M.754 9.58a.754.754 0 00-.754.758v2.525c0 .42.339.758.758.758h3.135l1.431.799-.326-.799h2.373a.757.757 0 00.758-.758v-2.525a.757.757 0 00-.758-.758H.754zm2.709.445h.03c.065.001.124.023.179.067a.26.26 0 01.103.19.29.29 0 01-.033.16c-.13.239-.236.64-.322 1.199-.083.541-.114.965-.094 1.267a.392.392 0 01-.039.219.213.213 0 01-.176.12c-.086.006-.177-.034-.263-.124-.31-.316-.555-.788-.735-1.416-.216.425-.375.744-.478.957-.196.376-.363.568-.502.578-.09.007-.166-.069-.233-.228-.17-.436-.352-1.277-.548-2.524a.297.297 0 01.054-.222c.047-.064.116-.095.21-.102.169-.013.265.065.288.238.103.695.217 1.284.336 1.766l.727-1.387c.066-.126.15-.192.25-.199.146-.01.237.083.273.28.083.441.188.817.315 1.136.086-.844.233-1.453.44-1.828a.255.255 0 01.218-.147zm1.293.36c.056 0 .116.006.18.02.232.05.411.177.53.386.107.18.161.395.161.654 0 .343-.087.654-.26.94-.2.332-.459.5-.781.5a.88.88 0 01-.18-.022.763.763 0 01-.531-.384 1.287 1.287 0 01-.158-.659c0-.342.085-.655.258-.937.202-.333.462-.498.78-.498zm2.084 0c.056 0 .116.006.18.02.236.05.411.177.53.386.107.18.16.395.16.654 0 .343-.086.654-.259.94-.2.332-.459.5-.781.5a.88.88 0 01-.18-.022.763.763 0 01-.531-.384 1.287 1.287 0 01-.16-.659c0-.342.087-.655.26-.937.202-.333.462-.498.78-.498zm4.437.047c-.305 0-.546.102-.718.304-.173.203-.256.49-.256.856 0 .395.086.697.256.906.17.21.418.316.744.316.315 0 .559-.107.728-.316.17-.21.256-.504.256-.883s-.087-.673-.26-.879c-.176-.202-.424-.304-.75-.304zm-1.466.002a1.13 1.13 0 00-.84.326c-.223.22-.332.499-.332.838 0 .362.108.658.328.88.22.223.505.336.861.336.103 0 .22-.016.346-.052v-.54c-.117.034-.216.051-.303.051a.545.545 0 01-.422-.177c-.106-.12-.16-.278-.16-.48 0-.19.053-.348.156-.468a.498.498 0 01.397-.181c.103 0 .212.015.332.049v-.537a1.394 1.394 0 00-.363-.045zm12.414 0a1.135 1.135 0 00-.84.326c-.223.22-.332.499-.332.838 0 .362.108.658.328.88.22.223.506.336.861.336.103 0 .22-.016.346-.052v-.54c-.116.034-.216.051-.303.051a.545.545 0 01-.422-.177c-.106-.12-.16-.278-.16-.48 0-.19.053-.348.156-.468a.498.498 0 01.397-.181c.103 0 .212.015.332.049v-.537a1.394 1.394 0 00-.363-.045zm-9.598.06l-.29 2.264h.579l.156-1.559.395 1.559h.412l.379-1.555.164 1.555h.603l-.304-2.264h-.791l-.12.508c-.03.13-.06.264-.087.4l-.067.352a29.97 29.97 0 00-.258-1.26h-.771zm2.768 0l-.29 2.264h.579l.156-1.559.396 1.559h.412l.375-1.555.165 1.555h.603l-.305-2.264h-.789l-.119.508c-.03.13-.06.264-.086.4l-.066.352c-.063-.352-.15-.771-.26-1.26h-.771zm3.988 0v2.264h.611v-1.031h.012l.494 1.03h.645l-.489-1.019a.61.61 0 00.37-.552.598.598 0 00-.25-.506c-.167-.123-.394-.186-.68-.186h-.713zm3.377 0v2.264H24v-.483h-.63v-.414h.54v-.468h-.54v-.416h.626v-.483H22.76zm-4.793.004v2.264h1.24v-.483h-.627v-.416h.541v-.468h-.54v-.415h.622v-.482h-1.236zm2.025.432c.146.003.25.025.313.072.063.046.091.12.091.227 0 .156-.135.236-.404.24v-.54zm-15.22.011c-.104 0-.205.069-.301.211a1.078 1.078 0 00-.2.639c0 .096.02.2.06.303.049.13.117.198.196.215.083.016.173-.02.27-.106.123-.11.205-.273.252-.492.016-.077.023-.16.023-.246 0-.097-.02-.2-.06-.303-.05-.13-.116-.198-.196-.215a.246.246 0 00-.045-.006zm2.083 0c-.103 0-.204.069-.3.211a1.078 1.078 0 00-.2.639c0 .096.02.2.06.303.049.13.117.198.196.215.083.016.173-.02.27-.106.123-.11.205-.273.252-.492.013-.077.023-.16.023-.246 0-.097-.02-.2-.06-.303-.05-.13-.116-.198-.196-.215a.246.246 0 00-.045-.006zm4.428.006c.233 0 .354.218.354.66-.004.273-.038.46-.098.553a.293.293 0 01-.262.139.266.266 0 01-.242-.139c-.056-.093-.084-.28-.084-.562 0-.436.11-.65.332-.65Z", "tip": "E-commerce dentro do WordPress, do seu jeito."}, {"n": "OpenAI", "hex": "#412991", "p": "M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z", "tip": "Automação e conteúdo com os modelos GPT."}, {"n": "Claude", "hex": "#D97757", "p": "m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z", "tip": "Agentes de IA que trabalham no seu negócio."}, {"n": "Anthropic", "hex": "#191919", "p": "M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z", "tip": "IA de ponta aplicada a processos reais."}, {"n": "Figma", "hex": "#F24E1E", "p": "M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z", "tip": "Design de interfaces e protótipos navegáveis."}, {"n": "Instagram", "hex": "#FF0069", "p": "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077", "tip": "Conteúdo, Reels e crescimento de audiência."}, {"n": "Google Ads", "hex": "#4285F4", "p": "M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z", "tip": "Anúncios na busca para quem já procura por você."}, {"n": "Google Analytics", "hex": "#E37400", "p": "M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z", "tip": "Números que explicam de onde vêm as vendas."}, {"n": "Brevo", "hex": "#0B996E", "p": "M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zM7.2 4.8h5.747c2.34 0 3.895 1.406 3.895 3.516 0 1.022-.348 1.862-1.09 2.588C17.189 11.812 18 13.22 18 14.785c0 2.86-2.64 5.016-6.164 5.016H7.199v-15zm2.085 1.952v5.537h.07c.233-.432.858-.796 2.249-1.226 2.039-.659 3.037-1.52 3.037-2.655 0-.998-.766-1.656-1.924-1.656H9.285zm4.87 5.266c-.766.385-1.67.748-2.76 1.11-1.229.387-2.11 1.386-2.11 2.407v2.315h2.365c2.387 0 4.149-1.34 4.149-3.155 0-1.067-.625-2.087-1.645-2.677z", "tip": "Email marketing e automações de relacionamento."}, {"n": "MailerLite", "hex": "#09C269", "p": "", "tip": "Newsletters e sequências que nutrem a sua lista."}, {"n": "Loja Integrada", "hex": "#7C4DFF", "p": "", "tip": "Lojas online na maior plataforma do ecommerce brasileiro."}, {"n": "Mailchimp", "hex": "#FFE01B", "p": "M11.267 0C6.791-.015-1.82 10.246 1.397 12.964l.79.669a3.88 3.88 0 0 0-.22 1.792c.084.84.518 1.644 1.22 2.266.666.59 1.542.964 2.392.964 1.406 3.24 4.62 5.228 8.386 5.34 4.04.12 7.433-1.776 8.854-5.182.093-.24.488-1.316.488-2.267 0-.956-.54-1.352-.885-1.352-.01-.037-.078-.286-.172-.586-.093-.3-.19-.51-.19-.51.375-.563.382-1.065.332-1.35-.053-.353-.2-.653-.496-.964-.296-.311-.902-.63-1.753-.868l-.446-.124c-.002-.019-.024-1.053-.043-1.497-.014-.32-.042-.822-.197-1.315-.186-.668-.508-1.253-.911-1.627 1.112-1.152 1.806-2.422 1.804-3.511-.003-2.095-2.576-2.729-5.746-1.416l-.672.285A678.22 678.22 0 0 0 12.7.504C12.304.159 11.817.002 11.267 0zm.073.873c.166 0 .322.019.465.058.297.084 1.28 1.224 1.28 1.224s-1.826 1.013-3.52 2.426c-2.28 1.757-4.005 4.311-5.037 7.082-.811.158-1.526.618-1.963 1.253-.261-.218-.748-.64-.834-.804-.698-1.326.761-3.902 1.781-5.357C5.834 3.44 9.37.867 11.34.873zm3.286 3.273c.04-.002.06.05.028.074-.143.11-.299.26-.413.414a.04.04 0 0 0 .031.064c.659.004 1.587.235 2.192.574.041.023.012.103-.034.092-.915-.21-2.414-.369-3.97.01-1.39.34-2.45.863-3.224 1.426-.04.028-.086-.023-.055-.06.896-1.035 1.999-1.935 2.987-2.44.034-.018.07.019.052.052-.079.143-.23.447-.278.678-.007.035.032.063.062.042.615-.42 1.684-.868 2.622-.926zm3.023 3.205l.056.001a.896.896 0 0 1 .456.146c.534.355.61 1.216.638 1.845.015.36.059 1.229.074 1.478.034.571.184.651.487.751.17.057.33.098.563.164.706.198 1.125.4 1.39.658.157.162.23.333.253.497.083.608-.472 1.36-1.942 2.041-1.607.746-3.557.935-4.904.785l-.471-.053c-1.078-.145-1.693 1.247-1.046 2.201.417.615 1.552 1.015 2.688 1.015 2.604 0 4.605-1.111 5.35-2.072a.987.987 0 0 0 .06-.085c.036-.055.006-.085-.04-.054-.608.416-3.31 2.069-6.2 1.571 0 0-.351-.057-.672-.182-.255-.1-.788-.344-.853-.891 2.333.72 3.801.039 3.801.039a.072.072 0 0 0 .042-.072.067.067 0 0 0-.074-.06s-1.911.283-3.718-.378c.197-.64.72-.408 1.51-.345a11.045 11.045 0 0 0 3.647-.394c.818-.234 1.892-.697 2.727-1.356.281.618.38 1.299.38 1.299s.219-.04.4.073c.173.106.299.326.213.895-.176 1.063-.628 1.926-1.387 2.72a5.714 5.714 0 0 1-1.666 1.244c-.34.18-.704.334-1.087.46-2.863.935-5.794-.093-6.739-2.3a3.545 3.545 0 0 1-.189-.522c-.403-1.455-.06-3.2 1.008-4.299.065-.07.132-.153.132-.256 0-.087-.055-.179-.102-.243-.374-.543-1.669-1.466-1.409-3.254.187-1.284 1.31-2.189 2.357-2.135.089.004.177.01.266.015.453.027.85.085 1.223.1.625.028 1.187-.063 1.853-.618.225-.187.405-.35.71-.401.028-.005.092-.028.215-.028zm.022 2.18a.42.42 0 0 0-.06.005c-.335.054-.347.468-.228 1.04.068.32.187.595.32.765.175-.02.343-.022.498 0 .089-.205.104-.557.024-.942-.112-.535-.261-.872-.554-.868zm-3.66 1.546a1.724 1.724 0 0 0-1.016.326c-.16.117-.311.28-.29.378.008.032.031.056.088.063.131.015.592-.217 1.122-.25.374-.023.684.094.923.2.239.104.386.173.443.113.037-.038.026-.11-.031-.204-.118-.192-.36-.387-.618-.497a1.601 1.601 0 0 0-.621-.129zm4.082.81c-.171-.003-.313.186-.317.42-.004.236.131.43.303.432.172.003.314-.185.318-.42.004-.236-.132-.429-.304-.432zm-3.58.172c-.05 0-.102.002-.155.008-.311.05-.483.152-.593.247-.094.082-.152.173-.152.237a.075.075 0 0 0 .075.076c.07 0 .228-.063.228-.063a1.98 1.98 0 0 1 1.001-.104c.157.018.23.027.265-.026.01-.016.022-.049-.01-.1-.063-.103-.311-.269-.66-.275zm2.26.4c-.127 0-.235.051-.283.148-.075.154.035.363.246.466.21.104.443.063.52-.09.075-.155-.035-.364-.246-.467a.542.542 0 0 0-.237-.058zm-11.635.024c.048 0 .098 0 .149.003.73.04 1.806.6 2.052 2.19.217 1.41-.128 2.843-1.449 3.069-.123.02-.248.029-.374.026-1.22-.033-2.539-1.132-2.67-2.435-.145-1.44.591-2.548 1.894-2.811.117-.024.252-.04.398-.042zm-.07.927a1.144 1.144 0 0 0-.847.364c-.38.418-.439.988-.366 1.19.027.073.07.094.1.098.064.008.16-.039.22-.2a1.2 1.2 0 0 0 .017-.052 1.58 1.58 0 0 1 .157-.37.689.689 0 0 1 .955-.199c.266.174.369.5.255.81-.058.161-.154.469-.133.721.043.511.357.717.64.738.274.01.466-.143.515-.256.029-.067.005-.107-.011-.125-.043-.053-.113-.037-.18-.021a.638.638 0 0 1-.16.022.347.347 0 0 1-.294-.148c-.078-.12-.073-.3.013-.504.011-.028.025-.058.04-.092.138-.308.368-.825.11-1.317-.195-.37-.513-.602-.894-.65a1.135 1.135 0 0 0-.138-.01z", "tip": "Campanhas de email para listas em crescimento."}, {"n": "E-goi", "hex": "#43BEB4", "p": "", "tip": "Email, SMS e automação multicanal."}, {"n": "Zapier", "hex": "#FF4F00", "p": "M4.157 0A4.151 4.151 0 0 0 0 4.161v15.678A4.151 4.151 0 0 0 4.157 24h15.682A4.152 4.152 0 0 0 24 19.839V4.161A4.152 4.152 0 0 0 19.839 0H4.157Zm10.61 8.761h.03a.577.577 0 0 1 .23.038.585.585 0 0 1 .201.124.63.63 0 0 1 .162.431.612.612 0 0 1-.162.435.58.58 0 0 1-.201.128.58.58 0 0 1-.23.042.529.529 0 0 1-.235-.042.585.585 0 0 1-.332-.328.559.559 0 0 1-.038-.235.613.613 0 0 1 .17-.431.59.59 0 0 1 .405-.162Zm2.853 1.572c.03.004.061.004.095.004.325-.011.646.064.937.219.238.144.431.355.552.609.128.279.189.582.185.888v.193a2 2 0 0 1 0 .219h-2.498c.003.227.075.45.204.642a.78.78 0 0 0 .646.265.714.714 0 0 0 .484-.136.642.642 0 0 0 .23-.318l.915.257a1.398 1.398 0 0 1-.28.537c-.14.159-.321.284-.521.355a2.234 2.234 0 0 1-.836.136 1.923 1.923 0 0 1-1.001-.245 1.618 1.618 0 0 1-.665-.703 2.221 2.221 0 0 1-.227-1.036 1.95 1.95 0 0 1 .48-1.398 1.9 1.9 0 0 1 1.3-.488Zm-9.607.023c.162.004.325.026.48.079.207.065.4.174.563.314.26.302.393.692.366 1.088v2.276H8.53l-.109-.711h-.065c-.064.163-.155.31-.272.439a1.122 1.122 0 0 1-.374.264 1.023 1.023 0 0 1-.453.083 1.334 1.334 0 0 1-.866-.264.965.965 0 0 1-.329-.801.993.993 0 0 1 .076-.431 1.02 1.02 0 0 1 .242-.363 1.478 1.478 0 0 1 1.043-.303h.952v-.181a.696.696 0 0 0-.136-.454.553.553 0 0 0-.438-.154.695.695 0 0 0-.378.086.48.48 0 0 0-.193.254l-.99-.144a1.26 1.26 0 0 1 .257-.563c.14-.174.321-.302.533-.378.261-.091.54-.136.82-.129.053-.003.106-.007.163-.007Zm4.384.007c.174 0 .347.038.506.114.182.083.34.211.458.374.257.423.377.911.351 1.406a2.53 2.53 0 0 1-.355 1.448 1.148 1.148 0 0 1-1.009.517c-.204 0-.401-.045-.582-.136a1.052 1.052 0 0 1-.48-.457 1.298 1.298 0 0 1-.114-.234h-.045l.004 1.784h-1.059v-4.713h.904l.117.805h.057c.068-.208.177-.401.328-.56a1.129 1.129 0 0 1 .843-.344h.076v-.004Zm7.559.084h.903l.113.805h.053a1.37 1.37 0 0 1 .235-.484.813.813 0 0 1 .313-.242.82.82 0 0 1 .39-.076h.234v1.051h-.401a.662.662 0 0 0-.313.008.623.623 0 0 0-.272.155.663.663 0 0 0-.174.26.683.683 0 0 0-.027.314v1.875h-1.054v-3.666Zm-17.515.003h3.262v.896L3.73 13.104l.034.113h1.973l.042.9H2.4v-.9l1.931-1.754-.045-.117H2.441v-.896Zm11.815 0h1.055v3.659h-1.055V10.45Zm3.443.684.019.016a.69.69 0 0 0-.351.045.756.756 0 0 0-.287.204c-.11.155-.174.336-.189.522h1.545c-.034-.526-.257-.787-.74-.787h.003Zm-5.718.163c-.026 0-.057 0-.083.004a.78.78 0 0 0-.31.053.746.746 0 0 0-.257.189 1.016 1.016 0 0 0-.204.695v.064c-.015.257.057.507.204.711a.634.634 0 0 0 .253.196.638.638 0 0 0 .314.061.644.644 0 0 0 .578-.265c.14-.223.204-.48.189-.74a1.216 1.216 0 0 0-.181-.711.677.677 0 0 0-.503-.257Zm-4.509 1.266a.464.464 0 0 0-.268.102.373.373 0 0 0-.114.276c0 .053.008.106.027.155a.375.375 0 0 0 .087.132.576.576 0 0 0 .397.11v.004a.863.863 0 0 0 .563-.182.573.573 0 0 0 .211-.457v-.14h-.903Z", "tip": "Milhares de apps conectados sem escrever código."}, {"n": "Hostinger", "hex": "#673DE6", "p": "M16.415 0v7.16l5.785 3.384V2.949L16.415 0ZM1.8 0v11.237h18.815L14.89 8.09l-7.457-.003V3.024L1.8 0Zm14.615 20.894v-5.019l-7.514-.005c.007.033-5.82-3.197-5.82-3.197l19.119.091V24l-5.785-3.106ZM1.8 13.551v7.343l5.633 2.949v-6.988L1.8 13.551Z", "tip": "Hospedagem rápida e gerenciada para o seu site."}, {"n": "Make", "hex": "#6D00CC", "p": "M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z", "tip": "Integrações e fluxos automáticos entre ferramentas."}, {"n": "Notion", "hex": "#000000", "p": "M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z", "tip": "Organização e documentação do projeto com você."}, {"n": "HTML5", "hex": "#E34F26", "p": "M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z", "tip": "Código feito à mão, leve e rápido."}, {"n": "CSS", "hex": "#663399", "p": "M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63", "tip": "Interfaces bonitas no pixel, em qualquer tela."}, {"n": "JavaScript", "hex": "#F7DF1E", "p": "M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z", "tip": "Interação e movimento em tudo o que fazemos."}, {"n": "TypeScript", "hex": "#3178C6", "p": "M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z", "tip": "Código sério, com menos erros em produção."}, {"n": "React", "hex": "#61DAFB", "p": "M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z", "tip": "Aplicações web modernas e escaláveis."}, {"n": "Tailwind CSS", "hex": "#06B6D4", "p": "M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z", "tip": "Design consistente e rápido de evoluir."}, {"n": "Vite", "hex": "#9135FF", "p": "M13.056 23.238a.57.57 0 0 1-1.02-.355v-5.202c0-.63-.512-1.143-1.144-1.143H5.148a.57.57 0 0 1-.464-.903l3.777-5.29c.54-.753 0-1.804-.93-1.804H.57a.574.574 0 0 1-.543-.746.6.6 0 0 1 .08-.157L5.008.78a.57.57 0 0 1 .467-.24h14.589a.57.57 0 0 1 .466.903l-3.778 5.29c-.54.755 0 1.806.93 1.806h5.745c.238 0 .424.138.513.322a.56.56 0 0 1-.063.603z", "tip": "Builds instantâneos, sites que carregam num piscar."}, {"n": "Node.js", "hex": "#5FA04E", "p": "M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z", "tip": "Automações e integrações do lado do servidor."}, {"n": "Cloudflare", "hex": "#F38020", "p": "M16.5088 16.8447c.1475-.5068.0908-.9707-.1553-1.3154-.2246-.3164-.6045-.499-1.0615-.5205l-8.6592-.1123a.1559.1559 0 0 1-.1333-.0713c-.0283-.042-.0351-.0986-.021-.1553.0278-.084.1123-.1484.2036-.1562l8.7359-.1123c1.0351-.0489 2.1601-.8868 2.5537-1.9136l.499-1.3013c.0215-.0561.0293-.1128.0147-.168-.5625-2.5463-2.835-4.4453-5.5499-4.4453-2.5039 0-4.6284 1.6177-5.3876 3.8614-.4927-.3658-1.1187-.5625-1.794-.499-1.2026.119-2.1665 1.083-2.2861 2.2856-.0283.31-.0069.6128.0635.894C1.5683 13.171 0 14.7754 0 16.752c0 .1748.0142.3515.0352.5273.0141.083.0844.1475.1689.1475h15.9814c.0909 0 .1758-.0645.2032-.1553l.12-.4268zm2.7568-5.5634c-.0771 0-.1611 0-.2383.0112-.0566 0-.1054.0415-.127.0976l-.3378 1.1744c-.1475.5068-.0918.9707.1543 1.3164.2256.3164.6055.498 1.0625.5195l1.8437.1133c.0557 0 .1055.0263.1329.0703.0283.043.0351.1074.0214.1562-.0283.084-.1132.1485-.204.1553l-1.921.1123c-1.041.0488-2.1582.8867-2.5527 1.914l-.1406.3585c-.0283.0713.0215.1416.0986.1416h6.5977c.0771 0 .1474-.0489.169-.126.1122-.4082.1757-.837.1757-1.2803 0-2.6025-2.125-4.727-4.7344-4.727", "tip": "Velocidade e segurança na frente do seu site."}];
+const tb=document.getElementById('techbar');
+if(tb){
+  tb.innerHTML=TECH.map(t=>{
+    const ic=t.p?`<svg viewBox="0 0 24 24" style="fill:${t.hex}"><path d="${t.p}"/></svg>`:'';
+    const nome=t.p?`<span class="tname">${t.n}</span>`:`<span class="tname" style="color:${t.hex}">${t.n}</span>`;
+    return `<span class="tl" tabindex="0">${ic}${nome}<span class="tip-balao"><b>${t.n}</b>${t.tip}</span></span>`;
+  }).join('');
+}
+
+/* formulário */
+document.getElementById('fx').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=e.target,email=f.email.value.trim(),site=f.site.value.trim();
+  const bt=f.querySelector('button');
+  if(bt.dataset.ok) return;
+  const antigo=bt.textContent; bt.textContent='Enviando...'; bt.disabled=true;
+  try{
+    const r=await fetch('/api/raiox.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:'',email:email,link:site,mensagem:'Pedido de Raio-X pela página Brasil',idioma:'br',site_url:''})});
+    const j=await r.json();
+    if(j&&j.ok){ bt.textContent='Recebido! Respondemos em até 48h.'; bt.dataset.ok='1'; return; }
+    throw new Error('falhou');
+  }catch(err){
+    bt.textContent=antigo; bt.disabled=false;
+    if(abrirChat(`Quero o Raio-X grátis. E-mail: ${email} · Site/Instagram: ${site}`)) return;
+    const corpo=`Quero o Raio-X grátis.%0A%0AE-mail: ${encodeURIComponent(email)}%0ASite/Instagram: ${encodeURIComponent(site)}`;
+    location.href=`mailto:${EMAIL_FALLBACK}?subject=${encodeURIComponent('Raio-X grátis: '+site)}&body=${corpo}`;
+  }
+});
+</script>
+<button class="ca-fab" id="caFab" aria-label="Abrir o chat"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></button>
+<div class="ca-idioma" id="caIdioma" role="dialog" aria-label="Escolha o idioma">
+  <h4>Antes de começar</h4>
+  <p>Em que idioma você prefere falar com a gente?</p>
+  <button data-l="pt-BR">Português do Brasil <i>Rafael</i></button>
+  <button data-l="pt-PT">Português de Portugal <i>Dhemes</i></button>
+  <button data-l="en">English <i>Dhemes</i></button>
+  <button data-l="es">Español <i>Dhemes</i></button>
+</div>
+<script id="ca-chat-js">
+(function(){
+  var K='criealgo_chat_idioma';
+  var fab=document.getElementById('caFab'), pane=document.getElementById('caIdioma');
+  var jaTem=null; try{ jaTem=localStorage.getItem(K); }catch(e){}
+  if(jaTem){ fab.parentNode && fab.parentNode.removeChild(fab); }
+  else {
+    var t=setInterval(function(){
+      var A=window.Tawk_API;
+      if(A && typeof A.hideWidget==='function'){ try{A.hideWidget();}catch(e){} clearInterval(t); }
+    },400);
+    setTimeout(function(){clearInterval(t);},25000);
+  }
+  function abrir(idioma){
+    var A=window.Tawk_API; if(!A) return false;
+    try{
+      if(idioma){
+        if(A.setAttributes) A.setAttributes({idioma:idioma},function(){});
+        if(A.addTags) A.addTags([idioma],function(){});
+      }
+      if(A.showWidget) A.showWidget();
+      if(A.maximize) A.maximize();
+      return true;
+    }catch(e){ return false; }
+  }
+  window.abrirChat=function(msg){
+    var A=window.Tawk_API;
+    if(msg && A && A.addEvent){ try{A.addEvent('pedido-raiox',{detalhe:msg},function(){});}catch(e){} }
+    var l=null; try{ l=localStorage.getItem(K); }catch(e){}
+    if(l) return abrir(l);
+    if(!A) return false;
+    pane.classList.add('on');
+    return true;
+  };
+  fab.addEventListener('click',function(){ window.abrirChat(); });
+  pane.addEventListener('click',function(ev){
+    var b=ev.target.closest('button[data-l]'); if(!b) return;
+    var l=b.getAttribute('data-l');
+    try{ localStorage.setItem(K,l); }catch(e){}
+    pane.classList.remove('on');
+    abrir(l);
+    if(fab.parentNode) fab.parentNode.removeChild(fab);
+  });
+  document.addEventListener('click',function(ev){
+    if(!pane.classList.contains('on')) return;
+    if(pane.contains(ev.target) || fab.contains(ev.target)) return;
+    pane.classList.remove('on');
+  });
+})();
+</script>
+<script id="br-troca">
+(function(){
+  if(!document.body) return;
+  var b=document.createElement('button');
+  b.id='prTroca'; b.type='button'; b.setAttribute('aria-label','Trocar de região');
+  b.style.cssText='position:fixed;left:18px;bottom:18px;z-index:9990;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.94);border:1px solid rgba(27,28,30,.12);border-radius:100px;padding:8px 14px;font-family:Inter,system-ui,-apple-system,sans-serif;font-size:.76rem;color:#4a4c52;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.08);opacity:.72;transition:opacity .2s,transform .2s';
+  b.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:#06D6A0;display:inline-block"></span>Brasil <span style="color:#1B1C1E;font-weight:600;text-decoration:underline;text-underline-offset:2px">trocar</span>';
+  b.onmouseenter=function(){ b.style.opacity='1'; b.style.transform='translateY(-2px)'; };
+  b.onmouseleave=function(){ b.style.opacity='.72'; b.style.transform='none'; };
+  b.onclick=function(){ try{ localStorage.removeItem('criealgo_regiao'); }catch(e){} location.href='/?r=trocar'; };
+  document.body.appendChild(b);
+})();
+</script>
+</body>
+</html>
