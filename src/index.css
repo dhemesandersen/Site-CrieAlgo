@@ -166,3 +166,7 @@ body {
   70% { opacity: 0; transform: translateY(-7px); }
   100% { opacity: 0; }
 }
+
+/* pulso do mic de ditado */
+.mic-pulsa { animation: micpulsa 1.4s infinite; }
+@keyframes micpulsa { 0%,100% { box-shadow: 0 0 0 0 rgba(239,71,111,.5); } 50% { box-shadow: 0 0 0 10px rgba(239,71,111,0); } }

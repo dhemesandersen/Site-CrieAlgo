@@ -122,8 +122,8 @@ h1 em::after{content:'';position:absolute;left:-4px;right:-4px;bottom:.01em;heig
 .dark{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(44px,6vw,78px);position:relative;overflow:hidden}
 .dark h2,.dark h3,.dark h4{color:#fff}
 .dark p{color:rgba(255,255,255,.72)}
-.pcard{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);padding:28px}
-.pcard b{font-family:'Space Grotesk';font-size:2.4rem;font-weight:700;display:block;line-height:1;letter-spacing:-.03em}
+.pcard{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);padding:20px}
+.pcard b{font-family:'Space Grotesk';font-size:1.9rem;font-weight:700;display:block;line-height:1;letter-spacing:-.03em}
 .pcard .src{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:14px;display:block;line-height:1.45}
 .c1{color:var(--amarelo)}.c2{color:var(--verde)}.c3{color:var(--rosa)}.c4{color:var(--azul)}
 
@@ -277,13 +277,13 @@ footer a:hover{color:var(--ink)}
 .pmrow.pmrev{animation:mqrev 220s linear infinite}
 .pmwrap:hover .pmrow{animation-play-state:paused}
 @keyframes mqrev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.pcard{width:172px;flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.pcard .pim{aspect-ratio:4/3;background:#f1f1ee;overflow:hidden}
-.pcard .pim img{width:100%;height:100%;object-fit:cover;display:block}
-.pcard .pmt{padding:8px 10px 10px}
-.pcard .pmt b{display:block;font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pcard .pmt span{display:block;font-size:.62rem;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(max-width:640px){.pcard{width:150px}.pmrow{gap:10px}}
+.pmcard{width:172px;flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pmcard .pim{aspect-ratio:4/3;background:#f1f1ee;overflow:hidden}
+.pmcard .pim img{width:100%;height:100%;object-fit:cover;display:block}
+.pmcard .pmt{padding:8px 10px 10px}
+.pmcard .pmt b{display:block;font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pmcard .pmt span{display:block;font-size:.62rem;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:640px){.pmcard{width:150px}.pmrow{gap:10px}}
 /* ===== ferramentas ===== */
 .techbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
 .tl{position:relative;display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:10px 16px;cursor:default}
@@ -339,6 +339,44 @@ footer a:hover{color:var(--ink)}
 .passos-dark .passo{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
 .passos-dark .passo b{color:#fff}
 .passos-dark .passo span{color:rgba(255,255,255,.55)}
+
+/* ===== FAQ compacto 2 colunas com gifs ===== */
+.faq2{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:30px;align-items:start;border-top:0}
+@media(max-width:760px){.faq2{grid-template-columns:1fr}}
+.faq2 .fq button{padding:14px 40px 14px 0;font-size:.95rem}
+.faq2 .fq:first-child{border-top:1px solid var(--line)}
+.faq2 .fq:nth-child(2){border-top:1px solid var(--line)}
+@media(max-width:760px){.faq2 .fq:nth-child(2){border-top:0}}
+.ans-in{display:flex;gap:14px;align-items:flex-start;padding:2px 0 16px}
+.ans-in img{width:25%;max-width:118px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid var(--line);flex:0 0 auto}
+.ans-in p{width:75%;font-size:.88rem;color:#4a4c52;padding:0}
+
+.rx-ta-wrap{position:relative}
+.rx-ta-wrap textarea{padding-right:56px}
+#rxMic{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);display:grid;place-items:center;cursor:pointer;transition:all .2s}
+#rxMic:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+#rxMic.gravando{background:#EF476F;border-color:#EF476F;color:#fff;animation:micpulsa 1.4s infinite}
+@keyframes micpulsa{0%,100%{box-shadow:0 0 0 0 rgba(239,71,111,.5)}50%{box-shadow:0 0 0 10px rgba(239,71,111,0)}}
+
+/* ===== rodapé escuro padronizado ===== */
+footer{padding:64px 0 40px;border-top:0;margin-top:76px;background:#0B0B0F;color:rgba(255,255,255,.6)}
+footer .logo{color:#fff}
+footer .flinks a{color:rgba(255,255,255,.6)}
+footer .flinks a:hover{color:#fff}
+.f-pill{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);border-radius:100px;padding:9px 18px;font-size:.85rem;font-weight:500;color:rgba(255,255,255,.8);margin-bottom:30px}
+.f-dot{width:9px;height:9px;border-radius:50%;background:#06D6A0;animation:fpulsa 1.6s infinite}
+@keyframes fpulsa{0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,.55)}50%{box-shadow:0 0 0 9px rgba(6,214,160,0)}}
+.f-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px;margin-top:8px}
+@media(max-width:760px){.f-grid{grid-template-columns:1fr}}
+.f-h{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.f-grid p,.f-grid a{font-size:.88rem;color:rgba(255,255,255,.6);text-decoration:none}
+.f-grid a:hover{color:#fff}
+.f-selos{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.f-selo{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);border-radius:100px;padding:8px 14px;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.7)}
+.f-selo svg{width:14px;height:14px}
+.f-base{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem;color:rgba(255,255,255,.45)}
+.f-base a{color:rgba(255,255,255,.55);text-decoration:none}
+.f-base a:hover{color:#fff}
 </style>
 
 </head>
@@ -444,9 +482,9 @@ footer a:hover{color:var(--ink)}
       <div class="grid2" style="gap:44px;align-items:center">
         <div>
           <h2 style="max-width:19ch">Te venderam a receita, a chapa e o avental.</h2>
-          <p style="margin-top:20px;font-size:1.06rem">A internet está cheia de ferramenta que promete resolver a sua vida. Plataforma de loja, construtor de site, CRM, agendador de post, IA que escreve, IA que desenha, IA que faz vídeo. Cada uma cobra uma mensalidade e devolve um ingrediente.</p>
-          <p style="margin-top:16px;font-size:1.06rem">Só que o dono do negócio não acordou querendo virar cozinheiro. Ele quer o lanche na mesa, quentinho, com o guardanapo do lado, para poder voltar a cuidar do que realmente dá dinheiro.</p>
-          <p style="margin-top:16px;font-size:1.06rem;color:#fff"><strong>A gente é a cozinha.</strong> Você diz a fome; nós entregamos o prato.</p>
+          <p style="margin-top:16px;font-size:.95rem">A internet está cheia de ferramenta que promete resolver a sua vida. Plataforma de loja, construtor de site, CRM, agendador de post, IA que escreve, IA que desenha, IA que faz vídeo. Cada uma cobra uma mensalidade e devolve um ingrediente.</p>
+          <p style="margin-top:12px;font-size:.95rem">Só que o dono do negócio não acordou querendo virar cozinheiro. Ele quer o lanche na mesa, quentinho, com o guardanapo do lado, para poder voltar a cuidar do que realmente dá dinheiro.</p>
+          <p style="margin-top:12px;font-size:.95rem;color:#fff"><strong>A gente é a cozinha.</strong> Você diz a fome; nós entregamos o prato.</p>
         </div>
         <div class="grid2" style="gap:16px">
           <div class="pcard"><b class="c3">R$ 0</b><p style="margin-top:12px">é o que a ferramenta mais cara do mundo faz pelo seu caixa enquanto ninguém a implementa direito.</p></div>
@@ -620,16 +658,16 @@ footer a:hover{color:var(--ink)}
               </div>
             </div>
           </div>
-          <textarea name="mensagem" rows="3" placeholder="O que faz o seu negócio? O que você quer construir?"></textarea>
+          <div class="rx-ta-wrap">
+            <textarea name="mensagem" rows="3" placeholder="O que faz o seu negócio? O que você quer construir?"></textarea>
+            <button type="button" id="rxMic" title="Falar em vez de escrever" aria-label="Ditar mensagem" hidden>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+            </button>
+          </div>
           <button type="submit" class="rx-cta">Quero o meu Raio-X →</button>
           <p class="form-note" style="color:rgba(255,255,255,.45)">Sem reunião obrigatória, sem ligação insistente, sem cartão. Se não fizer sentido para você, é só não responder.</p>
         </form>
 
-        <div class="passos passos-dark">
-          <div class="passo"><b>1 · Você manda</b><span>Leva 20 segundos. E se ainda não tem nada, melhor ainda: a folha em branco é o barato de arrumar.</span></div>
-          <div class="passo"><b>2 · A gente olha</b><span>Velocidade, checkout, frete, SEO, marca, caminho até a compra. Com olho de quem já teve loja.</span></div>
-          <div class="passo"><b>3 · Você recebe</b><span>Diagnóstico direto ao ponto. Com o que arrumar primeiro, mesmo que não seja com a gente.</span></div>
-        </div>
       </div>
     </div>
     </div>
@@ -756,23 +794,21 @@ footer a:hover{color:var(--ink)}
 <!-- FAQ -->
 <section class="sec" id="faq" style="padding-top:0">
   <div class="wrap">
-    <div class="grid2" style="gap:52px;align-items:start">
-      <div class="rv" style="position:sticky;top:106px">
-        <div class="eyebrow">Dúvidas</div>
-        <h2>O que todo mundo<br>pergunta antes.</h2>
-        <p class="lead" style="margin-top:16px">Se a sua não estiver aqui, chama no WhatsApp. Quem responde é gente.</p>
-      </div>
-      <div class="faq rv">
-        <div class="fq"><button>Eu não tenho nada ainda. Vocês pegam projeto do zero?</button><div class="ans"><p>Pegamos, e é onde a gente mais gosta de entrar. Sem nada feito não há vício para desfazer. Dá para escolher a plataforma certa desde o começo, montar a marca junto com o site e evitar as três ou quatro decisões caras que quase todo mundo erra no primeiro ano. Comece pelo Raio-X e escreva "ainda não tenho nada"; a conversa é a mesma.</p></div></div>
-        <div class="fq"><button>Vocês só fazem loja online?</button><div class="ans"><p>Não. Loja é o que mais nos pedem, mas metade do que fazemos hoje é outra coisa: site institucional, estratégia, marca, conteúdo, e-mail, campanha, automação. Entre os projetos atuais tem clínica que vende curso, turismo, imobiliária e estúdio de arquitetura. O método é o mesmo; o que muda é o argumento de venda.</p></div></div>
-        <div class="fq"><button>Por que não tem “solicite um orçamento”?</button><div class="ans"><p>Porque isso costuma ser uma forma educada de descobrir quanto você pode pagar antes de dizer o preço. Os pisos estão publicados. O valor final depende do tamanho do que você precisa, e isso a gente conversa com tudo na mesa, não com você no escuro.</p></div></div>
-        <div class="fq"><button>Vocês estão em Portugal. Como funciona na prática?</button><div class="ans"><p>O Rafael está no Brasil, no seu fuso e no seu WhatsApp. É com ele que você fala no dia a dia. O Dhemes dirige os projetos de Portugal e está online todos os dias, em todos eles. Na prática você não sente a distância; sente o contrário, porque parte do padrão vem do mercado europeu.</p></div></div>
-        <div class="fq"><button>Como eu pago daqui?</button><div class="ans"><p>Em real, com Pix, boleto ou cartão em até 12x, o padrão brasileiro. O recebimento passa por um intermediário autorizado pelo Banco Central que converte e repassa. Do seu lado é igual a pagar qualquer fornecedor nacional.</p></div></div>
-        <div class="fq"><button>Vocês usam IA. Então é tudo automático?</button><div class="ans"><p>Não. A IA acelera a produção: o que levava três semanas leva três dias. Mas a decisão do que fazer, a estrutura, a integração e o teste continuam humanos, e é exatamente aí que mora a diferença. Metade do código gerado por IA sem revisão sai com falha de segurança. O trabalho é revisar, integrar e testar, não colar o que a máquina cuspiu.</p></div></div>
-        <div class="fq"><button>Em quanto tempo fica pronto?</button><div class="ans"><p>Site institucional: 5 a 12 dias. Loja: de 10 a 25 dias, conforme o catálogo. Marca: 10 a 15 dias. WhatsApp profissional: 5 a 10 dias, porque a aprovação dos modelos de mensagem depende da Meta. Otimização pontual: quase sempre na mesma semana.</p></div></div>
-        <div class="fq"><button>Tem fidelidade nos planos mensais?</button><div class="ans"><p>Não tem. Avisou, encerra no fim do ciclo, e você fica com tudo: contas, arquivos, acessos. Fidelidade é muleta de quem tem medo de ser comparado.</p></div></div>
-        <div class="fq"><button>Meu site atual é ruim. Refazer ou consertar?</button><div class="ans"><p>Depende, e a resposta honesta às vezes é "conserta". Já devolvemos diagnóstico dizendo que o problema era uma configuração de frete e não o site inteiro. É justamente para isso que o Raio-X existe, e por isso ele é de graça.</p></div></div>
-      </div>
+    <div class="rv">
+      <div class="eyebrow">Dúvidas</div>
+      <h2 style="max-width:22ch">O que todo mundo pergunta antes.</h2>
+      <p class="lead" style="margin-top:12px">Se a sua não estiver aqui, chama no chat. Quem responde é gente.</p>
+    </div>
+    <div class="faq faq2 rv">
+      <div class="fq"><button>Eu não tenho nada ainda. Vocês pegam projeto do zero?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt=""><p>Pegamos, e é onde a gente mais gosta de entrar. Sem nada feito não há vício para desfazer. Dá para escolher a plataforma certa desde o começo, montar a marca junto com o site e evitar as três ou quatro decisões caras que quase todo mundo erra no primeiro ano. Comece pelo Raio-X e escreva "ainda não tenho nada"; a conversa é a mesma.</p></div></div></div>
+      <div class="fq"><button>Vocês só fazem loja online?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt=""><p>Não. Loja é o que mais nos pedem, mas metade do que fazemos hoje é outra coisa: site institucional, estratégia, marca, conteúdo, e-mail, campanha, automação. Entre os projetos atuais tem clínica que vende curso, turismo, imobiliária e estúdio de arquitetura. O método é o mesmo; o que muda é o argumento de venda.</p></div></div></div>
+      <div class="fq"><button>Por que não tem “solicite um orçamento”?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/3orieUe6ejxSFxYCXe/giphy.gif" alt=""><p>Porque isso costuma ser uma forma educada de descobrir quanto você pode pagar antes de dizer o preço. Os pisos estão publicados. O valor final depende do tamanho do que você precisa, e isso a gente conversa com tudo na mesa, não com você no escuro.</p></div></div></div>
+      <div class="fq"><button>Vocês estão em Portugal. Como funciona na prática?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" alt=""><p>O Rafael está no Brasil, no seu fuso e no seu WhatsApp. É com ele que você fala no dia a dia. O Dhemes dirige os projetos de Portugal e está online todos os dias, em todos eles. Na prática você não sente a distância; sente o contrário, porque parte do padrão vem do mercado europeu.</p></div></div></div>
+      <div class="fq"><button>Como eu pago daqui?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/LdOyjZ7io5Msw/giphy.gif" alt=""><p>Em real, com Pix, boleto ou cartão em até 12x, o padrão brasileiro. O recebimento passa por um intermediário autorizado pelo Banco Central que converte e repassa. Do seu lado é igual a pagar qualquer fornecedor nacional.</p></div></div></div>
+      <div class="fq"><button>Vocês usam IA. Então é tudo automático?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/mCRJDo24UvJMA/giphy.gif" alt=""><p>Não. A IA acelera a produção: o que levava três semanas leva três dias. Mas a decisão do que fazer, a estrutura, a integração e o teste continuam humanos, e é exatamente aí que mora a diferença. Metade do código gerado por IA sem revisão sai com falha de segurança. O trabalho é revisar, integrar e testar, não colar o que a máquina cuspiu.</p></div></div></div>
+      <div class="fq"><button>Em quanto tempo fica pronto?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt=""><p>Site institucional: 5 a 12 dias. Loja: de 10 a 25 dias, conforme o catálogo. Marca: 10 a 15 dias. WhatsApp profissional: 5 a 10 dias, porque a aprovação dos modelos de mensagem depende da Meta. Otimização pontual: quase sempre na mesma semana.</p></div></div></div>
+      <div class="fq"><button>Tem fidelidade nos planos mensais?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/l2JJKs3I69qfaQleE/giphy.gif" alt=""><p>Não tem. Avisou, encerra no fim do ciclo, e você fica com tudo: contas, arquivos, acessos. Fidelidade é muleta de quem tem medo de ser comparado.</p></div></div></div>
+      <div class="fq"><button>Meu site atual é ruim. Refazer ou consertar?</button><div class="ans"><div class="ans-in"><img loading="lazy" src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" alt=""><p>Depende, e a resposta honesta às vezes é "conserta". Já devolvemos diagnóstico dizendo que o problema era uma configuração de frete e não o site inteiro. É justamente para isso que o Raio-X existe, e por isso ele é de graça.</p></div></div></div>
     </div>
   </div>
 </section>
@@ -793,6 +829,7 @@ footer a:hover{color:var(--ink)}
 
 <footer>
   <div class="wrap">
+    <span class="f-pill"><span class="f-dot"></span> Disponíveis para novos projetos</span>
     <div class="frow">
       <div>
         <a href="#" class="logo" style="font-size:1.25rem">criealgo<span class="pt">.</span><span class="flag">BRASIL</span></a>
@@ -806,7 +843,36 @@ footer a:hover{color:var(--ink)}
         <a href="https://criealgo.pro" target="_blank" rel="noopener">criealgo.pro</a>
       </div>
     </div>
-    <p style="margin-top:28px;font-size:.77rem">Dados citados: Sebrae (Pesquisa Pulso dos Pequenos Negócios, 12ª ed., 2026) · Veracode GenAI Code Security e Cloud Security Alliance · Receita Federal (reforma tributária do consumo, 2026).</p>
+    <div class="f-grid">
+      <div>
+        <p class="f-h" style="color:#06D6A0">Brasil</p>
+        <p>Rua Pedroso Xavier, 188, São Paulo, SP</p>
+      </div>
+      <div>
+        <p class="f-h" style="color:#E3A93C">Portugal</p>
+        <p>Rua Prof. Manuel de Barros, 18, Esposende</p>
+      </div>
+      <div>
+        <p class="f-h" style="color:#118AB2">Contato</p>
+        <a href="mailto:rafael@criealgo.com.br">rafael@criealgo.com.br</a>
+      </div>
+    </div>
+    <div class="f-selos">
+      <span class="f-selo"><svg viewBox="0 0 24 24" style="fill:#0467DF"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg> Meta Ads Marketing</span>
+      <span class="f-selo">Windsor.ai</span>
+      <span class="f-selo">MailerLite</span>
+      <span class="f-selo">Loja Integrada</span>
+      <span class="f-selo"><span style="width:8px;height:8px;border-radius:50%;background:#06D6A0;display:inline-block"></span> SSL &amp; LGPD</span>
+    </div>
+    <p style="margin-top:26px;font-size:.72rem;color:rgba(255,255,255,.35)">Dados citados: Sebrae (Pesquisa Pulso dos Pequenos Negócios, 12ª ed., 2026) · Veracode GenAI Code Security e Cloud Security Alliance · Receita Federal (reforma tributária do consumo, 2026).</p>
+    <div class="f-base">
+      <p>© <span id="fAno"></span> criealgo. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:22px;flex-wrap:wrap">
+        <a href="https://instagram.com/criealgo" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/criealgo" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/legal/br.html">Privacidade e Termos</a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -894,7 +960,7 @@ const PROJ = [{"n": "VNLCST", "img": "img/vnlcst.webp", "f": "design ecom", "l":
 const _r1=document.getElementById('pmr1'),_r2=document.getElementById('pmr2');
 if(_r1&&_r2){
   const meio=Math.ceil(PROJ.length/2);
-  const card=p=>`<div class="pcard"><div class="pim"><img loading="lazy" src="${p.img}" alt="${p.n}"></div><div class="pmt"><b>${p.n}</b><span>${p.l}</span></div></div>`;
+  const card=p=>`<div class="pmcard"><div class="pim"><img loading="lazy" src="${p.img}" alt="${p.n}"></div><div class="pmt"><b>${p.n}</b><span>${p.l}</span></div></div>`;
   const l1=PROJ.slice(0,meio).map(card).join(''), l2=PROJ.slice(meio).map(card).join('');
   _r1.innerHTML=l1+l1; _r2.innerHTML=l2+l2;
 }
@@ -956,6 +1022,35 @@ rxPanela.addEventListener('drop',function(e){
 });
 rxRender();
 
+
+/* ditado por voz (Web Speech API) */
+(function(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var mic = document.getElementById('rxMic');
+  if(!SR || !mic) return;
+  mic.hidden = false;
+  var ta = document.querySelector('.rx-ta-wrap textarea');
+  var rec = null, ativo = false, base = '';
+  mic.addEventListener('click', function(){
+    if(ativo){ try{rec.stop();}catch(e){} return; }
+    rec = new SR();
+    rec.lang = 'pt-BR'; rec.continuous = true; rec.interimResults = true;
+    base = ta.value ? ta.value.replace(/[ \t\n]+$/,'') + ' ' : '';
+    rec.onresult = function(ev){
+      var fin = '', tmp = '';
+      for(var i=0;i<ev.results.length;i++){
+        if(ev.results[i].isFinal){ fin += ev.results[i][0].transcript; } else { tmp += ev.results[i][0].transcript; }
+      }
+      ta.value = base + fin + tmp;
+    };
+    rec.onend = function(){ ativo = false; mic.classList.remove('gravando'); };
+    rec.onerror = function(){ ativo = false; mic.classList.remove('gravando'); };
+    try{ rec.start(); ativo = true; mic.classList.add('gravando'); }catch(e){}
+  });
+})();
+
+
+var _fAno=document.getElementById('fAno'); if(_fAno) _fAno.textContent=new Date().getFullYear();
 document.getElementById('fx').addEventListener('submit',async e=>{
   e.preventDefault();
   const f=e.target,nome=f.nome.value.trim(),email=f.email.value.trim(),site=f.site.value.trim(),msg=f.mensagem.value.trim();

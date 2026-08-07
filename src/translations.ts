@@ -436,7 +436,8 @@ export const T: any = {
       "fServ": "Que tipo de serviço procura?",
       "servHint": "Toque num serviço da panela para o devolver à gaveta.",
       "potEmpty": "A panela está vazia. Arraste (ou toque) o que precisa.",
-      "drawerEmpty": "Levou tudo! Bom apetite."
+      "drawerEmpty": "Levou tudo! Bom apetite.",
+      "micTip": "Falar em vez de escrever"
     },
     "faq": {
       "kicker": "Perguntas honestas",
@@ -1049,7 +1050,8 @@ export const T: any = {
       "fServ": "What kind of service are you looking for?",
       "servHint": "Tap a service in the pot to put it back in the drawer.",
       "potEmpty": "The pot is empty. Drag (or tap) what you need.",
-      "drawerEmpty": "You took everything! Enjoy."
+      "drawerEmpty": "You took everything! Enjoy.",
+      "micTip": "Speak instead of typing"
     },
     "faq": {
       "kicker": "Honest questions",
@@ -1662,7 +1664,8 @@ export const T: any = {
       "fServ": "¿Qué tipo de servicio buscas?",
       "servHint": "Toca un servicio de la olla para devolverlo al cajón.",
       "potEmpty": "La olla está vacía. Arrastra (o toca) lo que necesitas.",
-      "drawerEmpty": "¡Te lo llevaste todo! Buen provecho."
+      "drawerEmpty": "¡Te lo llevaste todo! Buen provecho.",
+      "micTip": "Hablar en vez de escribir"
     },
     "faq": {
       "kicker": "Preguntas honestas",

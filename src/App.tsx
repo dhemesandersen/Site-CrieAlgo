@@ -1041,6 +1041,29 @@ const RaioXSection = () => {
   const [gaveta, setGaveta] = useState(false);
   const [servSel, setServSel] = useState<string[]>([]);
   const [sobrePanela, setSobrePanela] = useState(false);
+  const [gravando, setGravando] = useState(false);
+  const recRef = useRef<any>(null);
+  const temMic = typeof window !== 'undefined' && !!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+  const ditado = () => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) return;
+    if (gravando) { try { recRef.current?.stop(); } catch {} return; }
+    const rec = new SR();
+    rec.lang = lang === 'pt' ? 'pt-PT' : lang === 'es' ? 'es-ES' : 'en-US';
+    rec.continuous = true;
+    rec.interimResults = true;
+    const base = desc ? desc.replace(/\s+$/, '') + ' ' : '';
+    rec.onresult = (ev: any) => {
+      let fin = '', tmp = '';
+      for (let i = 0; i < ev.results.length; i++) {
+        if (ev.results[i].isFinal) fin += ev.results[i][0].transcript; else tmp += ev.results[i][0].transcript;
+      }
+      setDesc(base + fin + tmp);
+    };
+    rec.onend = () => setGravando(false);
+    rec.onerror = () => setGravando(false);
+    try { rec.start(); recRef.current = rec; setGravando(true); } catch {}
+  };
   const addServ = (id: string) => setServSel((sel) => (sel.includes(id) ? sel : [...sel, id]));
   const rmServ = (id: string) => setServSel((sel) => sel.filter((x) => x !== id));
   const toggleServ = (id: string) =>
@@ -1232,13 +1255,28 @@ const RaioXSection = () => {
               )}
             </AnimatePresence>
           </div>
-          <textarea
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            placeholder={t.raiox.fDesc}
-            rows={4}
-            className="w-full bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/40 outline-none focus:border-[#06D6A0]/60 transition-colors resize-none"
-          />
+          <div className="relative">
+            <textarea
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              placeholder={t.raiox.fDesc}
+              rows={4}
+              className="w-full bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-4 pr-14 text-white placeholder-white/40 outline-none focus:border-[#06D6A0]/60 transition-colors resize-none"
+            />
+            {temMic && (
+              <button
+                type="button"
+                onClick={ditado}
+                title={t.raiox.micTip}
+                aria-label={t.raiox.micTip}
+                className={`absolute right-3 bottom-3 w-10 h-10 rounded-full border grid place-items-center transition-all ${
+                  gravando ? 'bg-[#EF476F] border-[#EF476F] text-white mic-pulsa' : 'bg-white/[0.08] border-white/20 text-white/70 hover:text-white hover:border-white/40'
+                }`}
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+              </button>
+            )}
+          </div>
           <button
             type="submit"
             disabled={estado === 'sending' || estado === 'done'}
