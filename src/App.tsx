@@ -393,7 +393,7 @@ const StatsRoulette = () => {
 
   return (
     <section
-      className="relative overflow-hidden py-40 md:py-56 min-h-[60vh] flex items-center justify-center cursor-grab active:cursor-grabbing border-y border-black/5 mt-12 md:mt-24 z-20 bg-[#0a0a0a]"
+      className="relative overflow-hidden py-24 md:py-32 min-h-[44vh] flex items-center justify-center cursor-grab active:cursor-grabbing border-y border-black/5 mt-8 md:mt-14 z-20 bg-[#0a0a0a]"
       style={{ perspective: '1200px' }}
     >
       <SpaceBackground />
@@ -475,10 +475,10 @@ const TimelineSection = () => {
   const isDesktop = useIsDesktop();
 
   return (
-    <section id="sobre" className="py-24 md:py-40 bg-white relative z-10 border-t border-black/5">
+    <section id="sobre" className="py-14 md:py-24 bg-white relative z-10 border-t border-black/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-16 md:mb-24">
-          <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-6">{t.timeline.heading}</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-6">{t.timeline.heading}</h2>
           <p className="text-xl text-black/50 max-w-2xl font-light">{t.timeline.subtitle}</p>
         </div>
 
@@ -499,7 +499,7 @@ const TimelineSection = () => {
                 key={i}
                 onViewportEnter={() => setActiveIndex(i)}
                 viewport={{ margin: '-45% 0px -45% 0px' }}
-                className={`py-12 md:py-24 border-t border-black/10 first:border-none transition-opacity duration-500 ${
+                className={`py-8 md:py-14 border-t border-black/10 first:border-none transition-opacity duration-500 ${
                   activeIndex === i ? 'opacity-100' : 'opacity-30'
                 }`}
               >
@@ -568,7 +568,7 @@ const ProjectsMarquee = () => {
     <section id="trabalho" className="py-24 bg-white text-black overflow-hidden relative z-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
         <p className="text-sm font-semibold tracking-widest uppercase text-[#118AB2] mb-5">Portfolio</p>
-        <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-4">
+        <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-4">
           {t.portfolio.heading1} <span className="italic text-black/40">{t.portfolio.heading2}</span>
         </h2>
         <p className="text-black/50 text-xl font-light">{t.portfolio.subtitle}</p>
@@ -609,7 +609,7 @@ const CLIENT_LOGOS: { name: string; img?: string; invert?: boolean; h?: number }
 const ClientsMarquee = () => {
   const { t } = useLang();
   return (
-    <section className="py-16 md:py-20 bg-white text-black border-t border-black/5 relative z-20 overflow-hidden">
+    <section className="py-10 md:py-14 bg-white text-black border-t border-black/5 relative z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-9">
         <p className="text-sm font-semibold tracking-widest text-[#06D6A0] uppercase">{t.clients.heading}</p>
       </div>
@@ -785,7 +785,7 @@ const LabsSection = () => {
   const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="servicos" className="relative py-24 md:py-36 bg-[#F2EFE9] text-[#1B1C1E] overflow-hidden z-10 rounded-t-[3rem]">
+    <section id="servicos" className="relative py-14 md:py-20 bg-[#F2EFE9] text-[#1B1C1E] overflow-hidden z-10 rounded-t-[3rem]">
       <div className="absolute -left-40 top-40 w-[34rem] h-[34rem] rounded-full bg-[#4285F4] opacity-90 pointer-events-none" aria-hidden="true"></div>
       <div
         className="absolute -right-24 -top-16 w-[30rem] h-[26rem] bg-[#57D982] opacity-90 pointer-events-none"
@@ -800,7 +800,7 @@ const LabsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-6xl font-display font-medium tracking-tight leading-[1.08] mb-6"
+            className="text-3xl md:text-5xl font-display font-medium tracking-tight leading-[1.08] mb-6"
           >
             {t.labs.heading1}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4285F4] via-[#A142F4] to-[#EA4335]">{t.labs.heading2}</span>
@@ -912,16 +912,16 @@ const PACOTE_CORES = ['#118AB2', '#9B7BE8', '#06D6A0', '#FFD166', '#EF476F', '#1
 const PacotesSection = () => {
   const { t } = useLang();
   return (
-    <section id="pacotes" className="py-24 md:py-32 bg-[#F9F9F9] relative z-20 border-t border-black/5">
+    <section id="pacotes" className="py-14 md:py-20 bg-[#F9F9F9] relative z-20 border-t border-black/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <p className="text-sm font-semibold tracking-widest uppercase text-[#EF476F] mb-6">{t.pacotes.kicker}</p>
         <div className="flex items-end justify-between gap-6">
-          <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-4">
             {t.pacotes.h1} <span className="italic text-black/40">{t.pacotes.h2}</span>
           </h2>
           <div className="hidden md:block shrink-0 mb-2"><RocketDoodle size={52} /></div>
         </div>
-        <p className="text-black/50 text-xl font-light max-w-2xl mb-14">{t.pacotes.sub}</p>
+        <p className="text-black/50 text-lg font-light max-w-2xl mb-8">{t.pacotes.sub}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {t.pacotes.items.map((p: any, i: number) => (
@@ -968,13 +968,13 @@ const TIME_CORES = ['#06D6A0', '#FFD166'];
 const TimeSection = () => {
   const { t } = useLang();
   return (
-    <section id="equipa" className="py-24 md:py-32 bg-white relative z-20 border-t border-black/5">
+    <section id="equipa" className="py-14 md:py-20 bg-white relative z-20 border-t border-black/5">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         <p className="text-sm font-semibold tracking-widest uppercase text-[#06D6A0] mb-6">{t.time.kicker}</p>
-        <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-4">
+        <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-4">
           {t.time.h1} <span className="italic text-black/40">{t.time.h2}</span>
         </h2>
-        <p className="text-black/50 text-xl font-light max-w-2xl mb-14">{t.time.sub}</p>
+        <p className="text-black/50 text-lg font-light max-w-2xl mb-8">{t.time.sub}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
           {t.time.pessoas.map((p: any, i: number) => (
             <motion.div
@@ -1095,7 +1095,7 @@ const RaioXSection = () => {
   };
 
   return (
-    <section id="raiox" className="relative z-20 py-24 md:py-36 bg-[#0a0a0c] text-white rounded-t-[3rem] -mt-8 overflow-hidden">
+    <section id="raiox" className="relative z-20 py-14 md:py-20 bg-[#0a0a0c] text-white rounded-t-[3rem] -mt-8 overflow-hidden">
       <video
         src="https://videos.pexels.com/video-files/18388881/18388881-hd_1440_1080_60fps.mp4"
         autoPlay
@@ -1109,12 +1109,12 @@ const RaioXSection = () => {
       <div className="absolute -right-32 -top-24 w-[26rem] h-[26rem] rounded-full bg-[#06D6A0] opacity-[0.10] pointer-events-none blur-3xl" aria-hidden="true"></div>
 
       <div className="absolute right-10 top-10 hidden lg:block opacity-90 pointer-events-none"><RocketDoodle size={56} /></div>
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-start">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggeredContainer}>
           <motion.p variants={fadeIn} className="text-sm font-semibold tracking-widest uppercase text-[#06D6A0] mb-6">
             {t.raiox.kicker}
           </motion.p>
-          <motion.h2 variants={fadeIn} className="text-4xl md:text-6xl font-display font-medium tracking-tight leading-[1.06] mb-8">
+          <motion.h2 variants={fadeIn} className="text-3xl md:text-5xl font-display font-medium tracking-tight leading-[1.06] mb-6">
             {t.raiox.h1} <span className="text-[#FFD166]">{t.raiox.h2}</span>
           </motion.h2>
           <motion.p variants={fadeIn} className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-xl">
@@ -1377,7 +1377,7 @@ const TechLogosSection = () => {
   const { t } = useLang();
   const logos = TECH_LOGOS.filter((l) => l.name !== 'Anthropic');
   return (
-    <section className="py-16 md:py-20 bg-white text-black border-t border-black/5 relative z-20 pb-24">
+    <section className="py-10 md:py-14 bg-white text-black border-t border-black/5 relative z-20 pb-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <p className="text-sm font-semibold tracking-widest uppercase mb-10" style={{ color: '#E3A93C' }}>{t.tech.heading}</p>
         <div className="flex flex-wrap items-center gap-x-9 gap-y-8 md:gap-x-12">
@@ -1569,12 +1569,12 @@ export default function App() {
         <FaqSection />
 
         {/* CTA / Footer */}
-        <footer id="contato" className="py-24 md:py-32 px-6 md:px-12 bg-[#0B0B0F] text-white relative z-20 text-center">
+        <footer id="contato" className="py-14 md:py-20 px-6 md:px-12 bg-[#0B0B0F] text-white relative z-20 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggeredContainer} className="flex flex-col items-center max-w-7xl mx-auto">
             <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-medium text-white/80 mb-10">
               <span className="foot-dot"></span> {t.footer.avail}
             </span>
-            <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-display font-medium tracking-tighter leading-none mb-12 text-white">
+            <h2 className="text-4xl md:text-6xl lg:text-[4.6rem] font-display font-medium tracking-tighter leading-none mb-9 text-white">
               {t.footer.heading1} <br />
               <span className="text-white/40 italic">{t.footer.heading2}</span>
             </h2>
